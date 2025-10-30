@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://cov5dq4blu4ik"]
+
+[ext_resource type="Script" uid="uid://cldllxlsr3agi" path="res://Scenes/Kid Encounters/1st_Kid_Encounter.gd" id="1_5rrj1"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="2_7mis7"]
+[ext_resource type="PackedScene" uid="uid://bu5s4o3d6s2ba" path="res://Scenes/Dialogues/Dialogue_Main.tscn" id="2_72pow"]
+[ext_resource type="PackedScene" uid="uid://jhqiv2l1ju44" path="res://Assets 3D/Kid/Baby Hands.glb" id="2_flidr"]
+[ext_resource type="Texture2D" uid="uid://ctj6leqjamyj0" path="res://Assets 3D/Kid/Baby Hands_Baby Hand_ZenUV_Generic_Material_1.png" id="3_flidr"]
+[ext_resource type="Texture2D" uid="uid://drn7vfyfmtij4" path="res://Assets 3D/Kid/Baby Hands_Baby Hand_ZenUV_Generic_Material.png" id="4_3b2yy"]
+[ext_resource type="Texture2D" uid="uid://b81867isagdoc" path="res://Assets 3D/Kid/Baby Hands_Baby Hand_ZenUV_Generic_Material_2.png" id="5_rfju0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b2yy"]
+albedo_texture = ExtResource("3_flidr")
+roughness_texture = ExtResource("5_rfju0")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = ExtResource("4_3b2yy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfju0"]
+albedo_color = Color(0.96862745, 0.41568628, 0.13333334, 1)
+roughness = 0.46
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk2f2"]
+size = Vector3(4.4347916, 4.0216675, 4.033203)
+
+[node name="Kid" type="Node3D"]
+script = ExtResource("1_5rrj1")
+Interact_Text = "Handle Cookie"
+
+[node name="Baby Hands" parent="." instance=ExtResource("2_flidr")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+
+[node name="Skeleton3D" parent="Baby Hands/Braco 1" index="0"]
+bones/0/position = Vector3(0.011549217, 0.018603567, -0.0068479106)
+bones/0/rotation = Quaternion(-0.039803896, 0.69416237, 0.71720225, 0.046637617)
+bones/1/rotation = Quaternion(0.20441142, 0.030034766, 0.024287479, 0.9781227)
+bones/2/position = Vector3(-0.024046453, 0.012405572, 0.0047817254)
+bones/2/rotation = Quaternion(-0.63128245, -0.20451917, 0.19138233, 0.72320616)
+bones/3/rotation = Quaternion(-0.19152896, 0.043374885, -0.42377204, 0.88422436)
+bones/4/rotation = Quaternion(-0.10177481, 0.06854697, -0.43316755, 0.8929217)
+bones/5/position = Vector3(-0.015281267, 0.021169284, 0.0016715899)
+bones/5/rotation = Quaternion(-0.29572323, -0.06137022, 0.07656749, 0.95022047)
+bones/6/rotation = Quaternion(-0.6597896, 0.024500234, 0.06354096, 0.7483582)
+bones/7/rotation = Quaternion(-0.6735999, -0.0013347589, 0.0065716594, 0.7390658)
+bones/9/position = Vector3(-0.005436955, 0.028012812, -0.0013875031)
+bones/9/rotation = Quaternion(-0.25925398, -0.048067812, 0.04970113, 0.96333104)
+bones/10/rotation = Quaternion(-0.8103744, 0.010369187, 0.05703965, 0.5830373)
+bones/11/rotation = Quaternion(-0.69411963, -0.026293682, 0.035249896, 0.7185152)
+bones/13/position = Vector3(0.00713398, 0.026389932, -0.0049261055)
+bones/13/rotation = Quaternion(-0.16992201, -0.0071798987, -0.019224191, 0.9852438)
+bones/14/rotation = Quaternion(-0.80008924, -0.008313049, 0.03358664, 0.59888226)
+bones/15/rotation = Quaternion(-0.6233772, -0.02276111, 0.022832964, 0.7812563)
+bones/16/rotation = Quaternion(-0.32970816, 0.008207222, 0.016977174, 0.9438946)
+bones/17/position = Vector3(0.014597763, 0.021097288, -0.00023320597)
+bones/17/rotation = Quaternion(-0.1832665, 0.00831655, -0.089902446, 0.97890854)
+bones/18/rotation = Quaternion(-0.32606453, 0.005227686, 0.03597465, 0.9446483)
+bones/19/rotation = Quaternion(-0.6564443, -0.043956123, 0.03281314, 0.75237757)
+bones/20/rotation = Quaternion(-0.40278012, -0.0071309386, 0.04804806, 0.914007)
+
+[node name="Mao_1" parent="Baby Hands/Braco 1/Skeleton3D" index="0"]
+"blend_shapes/Hold Fix" = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_3b2yy")
+
+[node name="Skeleton3D" parent="Baby Hands/Bucker" index="0"]
+bones/0/position = Vector3(0.0013786745, 0.0019576428, 0.08893545)
+bones/0/rotation = Quaternion(-0.7155435, 0, 0, 0.69856834)
+bones/1/position = Vector3(0.00031013964, -0.022784786, 0.13585114)
+bones/1/rotation = Quaternion(-0.49123168, 0.50861716, -0.49123156, 0.5086174)
+bones/2/rotation = Quaternion(-0.0037785557, -0.70709664, -0.0037785538, 0.7070969)
+
+[node name="Cylinder" parent="Baby Hands/Bucker/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rfju0")
+
+[node name="Skeleton3D" parent="Baby Hands/Braco 2" index="0"]
+bones/0/position = Vector3(-0.08472798, -0.17460853, 0.03718794)
+bones/0/rotation = Quaternion(-0.726451, 0.23919536, 0.46444404, -0.4464824)
+bones/1/rotation = Quaternion(-0.14965895, -0.2543396, -0.008662487, 0.9554258)
+bones/2/rotation = Quaternion(-0.13111585, -0.036683988, 0.18466493, 0.97332513)
+bones/3/rotation = Quaternion(-0.037117027, -0.045722935, -0.033253636, 0.9977104)
+bones/4/rotation = Quaternion(-0.050213765, -0.08548782, 0.015571367, 0.9949512)
+bones/5/position = Vector3(-0.014017238, 0.022761434, 0.0028020367)
+bones/5/rotation = Quaternion(-0.12619014, -0.067221485, 0.04852513, 0.9885357)
+bones/6/rotation = Quaternion(-0.1863126, 0.013763361, 0.007848316, 0.98236275)
+bones/7/rotation = Quaternion(-0.10315112, 0.0028281484, 0.0060804253, 0.99464315)
+bones/8/rotation = Quaternion(-0.10895423, 0.012569171, -0.010491432, 0.993912)
+bones/9/position = Vector3(-0.0030944264, 0.027085975, -0.0022388112)
+bones/9/rotation = Quaternion(-0.094920985, -0.061799083, 0.03352206, 0.99299914)
+bones/10/rotation = Quaternion(-0.23260523, -0.0052128113, -0.015003679, 0.97244155)
+bones/11/rotation = Quaternion(-0.1327433, -0.000698093, 0.018622259, 0.9909753)
+bones/12/rotation = Quaternion(-0.05662333, 0.013991205, 0.0033992273, 0.9982918)
+bones/13/position = Vector3(0.008302387, 0.025915265, -0.0055902833)
+bones/13/rotation = Quaternion(-0.10136929, -0.019722478, -0.016160393, 0.99452215)
+bones/14/rotation = Quaternion(-0.20237088, -0.018977247, 0.015204595, 0.979007)
+bones/15/rotation = Quaternion(-0.15723741, -0.008547562, 0.031086162, 0.9870345)
+bones/16/rotation = Quaternion(-0.020047385, 0.013076896, 0.013585902, 0.9996212)
+bones/17/position = Vector3(0.017557267, 0.026034841, -0.0019573201)
+bones/17/rotation = Quaternion(-0.14547713, 0.014668725, -0.05669905, 0.9876267)
+bones/18/rotation = Quaternion(-0.1788185, -0.024008641, 0.010861935, 0.98352915)
+bones/19/rotation = Quaternion(-0.098032, -0.016757974, 0.052230425, 0.9936704)
+bones/20/rotation = Quaternion(-0.021052266, 0.011860066, 0.047104087, 0.9985977)
+
+[node name="Mao_1_001" parent="Baby Hands/Braco 2/Skeleton3D" index="0"]
+"blend_shapes/Fix Holding" = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_3b2yy")
+
+[node name="AnimationPlayer" parent="Baby Hands" index="3"]
+autoplay = "Baby_Door_IDLE"
+
+[node name="DialogueMain" parent="." instance=ExtResource("2_72pow")]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.31350866, -0.5863374, -0.38772643, 0.6270173, 1.1726748, 0.77545285)
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+process_mode = 4
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_7mis7")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218647, 2.0049744, 0)
+shape = SubResource("BoxShape3D_kk2f2")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[connection signal="Dialogue_Advanced" from="DialogueMain" to="." method="_on_Dialogue_Advanced"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_Hands_Visible"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_Hands_Invisible"]
+
+[editable path="Baby Hands"]

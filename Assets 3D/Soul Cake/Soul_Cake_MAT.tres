@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://chfrks7i1pbjo"]
+
+[ext_resource type="Texture2D" uid="uid://dxm3qngxtyxdi" path="res://Assets 3D/Soul Cake/Souls_Cake_Low_Poly_Material.001_BaseColor_sRGB.png" id="1_30rq4"]
+[ext_resource type="Texture2D" uid="uid://bivwc3paq8xfp" path="res://Assets 3D/Soul Cake/Souls_Cake_Low_Poly_Material.001_OcclusionRoughnessMetallic_Raw.png" id="2_fvs1w"]
+[ext_resource type="Texture2D" uid="uid://bfiknlfgavhda" path="res://Assets 3D/Soul Cake/Souls_Cake_Low_Poly_Material.001_Normal_Raw.png" id="3_yrbdt"]
+
+[resource]
+albedo_color = Color(1.3167266, 1.3167266, 1.3167266, 1)
+albedo_texture = ExtResource("1_30rq4")
+roughness_texture = ExtResource("2_fvs1w")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_yrbdt")

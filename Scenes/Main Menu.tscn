@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2hq16koqq4is"]
+
+[ext_resource type="Script" uid="uid://dp2bndly84lcc" path="res://Scenes/main_menu_SCRIPT.gd" id="1_totuj"]
+[ext_resource type="PackedScene" uid="uid://cd0evft6nks72" path="res://Scenes/starter_ambience_SCENE.tscn" id="2_hcxxy"]
+[ext_resource type="PackedScene" uid="uid://cvcxn574agxnk" path="res://Scenes/Death_Screen.tscn" id="2_ur25d"]
+[ext_resource type="Script" uid="uid://boqmidlagtso5" path="res://Scenes/settings_panel-script.gd" id="4_eotax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0126h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udm2q"]
+bg_color = Color(0.06666667, 0.07058824, 0.05490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjet1"]
+bg_color = Color(0.06666667, 0.07058824, 0.05490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lp62"]
+bg_color = Color(0.06666667, 0.07058824, 0.05490196, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur25d"]
+bg_color = Color(0.12941177, 0.15294118, 0.03529412, 1)
+corner_radius_bottom_right = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(-10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eotax"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_totuj")
+
+[node name="DeathScreen" parent="." instance=ExtResource("2_ur25d")]
+visible = false
+z_index = 32
+layout_mode = 1
+
+[node name="Starter_Ambience" parent="." instance=ExtResource("2_hcxxy")]
+
+[node name="How_to_Play_Button" type="LinkButton" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 241.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.92, 0.78660005, 0.1196, 1)
+theme_override_colors/font_hover_color = Color(0.2527293, 0.21052724, 0.009051565, 1)
+theme_override_font_sizes/font_size = 38
+theme_override_styles/focus = SubResource("StyleBoxFlat_0126h")
+text = "How to Play"
+underline = 2
+uri = "https://paranoah-studio.itch.io/the-souling"
+
+[node name="Buttons Menu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1474.0
+offset_top = 395.0
+offset_right = 1794.0
+offset_bottom = 883.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Start Game Button" type="Button" parent="Buttons Menu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_udm2q")
+text = "Start Game"
+
+[node name="Settings" type="Button" parent="Buttons Menu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_mjet1")
+text = "Settings"
+
+[node name="Quit Button" type="Button" parent="Buttons Menu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_4lp62")
+text = "Quit"
+
+[node name="Settings Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -136.0
+offset_right = 448.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ur25d")
+script = ExtResource("4_eotax")
+
+[node name="Close_Button" type="Button" parent="Settings Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = -28.0
+offset_right = 24.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_eotax")
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 61
+alignment = 1
+
+[node name="Master Audio Text" type="Label" parent="Settings Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Master Audio :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume Slider" type="HSlider" parent="Settings Panel/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="Master Audio Text2" type="Label" parent="Settings Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Graphics Quality :"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Performance Checkbox" type="CheckBox" parent="Settings Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+button_pressed = true
+text = "Performance"
+
+[node name="Quality CheckBox" type="CheckBox" parent="Settings Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quality"
+
+[connection signal="pressed" from="Buttons Menu/Start Game Button" to="." method="_on_Start_Game_Clicked"]
+[connection signal="pressed" from="Buttons Menu/Settings" to="Settings Panel" method="_Show_My_Settings_Panel"]
+[connection signal="pressed" from="Buttons Menu/Quit Button" to="." method="_on_quit_Game_Clicked"]
+[connection signal="pressed" from="Settings Panel/Close_Button" to="Settings Panel" method="_on_Close_Button_Clicked"]
+[connection signal="value_changed" from="Settings Panel/VBoxContainer/Volume Slider" to="Settings Panel" method="_on_Master_Volume_Changed"]
+[connection signal="pressed" from="Settings Panel/VBoxContainer/HBoxContainer/Performance Checkbox" to="Settings Panel" method="_on_Graphics_PERFORMANCE_Settings_Clicked"]
+[connection signal="pressed" from="Settings Panel/VBoxContainer/HBoxContainer/Quality CheckBox" to="Settings Panel" method="_on_Graphics_QUALITY_Settings_Clicked"]

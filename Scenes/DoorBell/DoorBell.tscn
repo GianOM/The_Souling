@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c178ioc6n8f8p"]
+
+[ext_resource type="Script" uid="uid://oyx11icqrbbv" path="res://Scenes/DoorBell/door_bell-SCRIPT.gd" id="1_dckae"]
+[ext_resource type="AudioStream" uid="uid://dt8d5rkfbmk3f" path="res://Sounds/SFX/Doorbell/Door Bell.mp3" id="1_gdokv"]
+
+[node name="DoorBell" type="Node3D"]
+script = ExtResource("1_dckae")
+
+[node name="DoorBell Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_gdokv")

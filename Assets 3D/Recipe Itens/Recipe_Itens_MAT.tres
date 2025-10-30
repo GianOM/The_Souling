@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://c2fws5f2wioeo"]
+
+[ext_resource type="Texture2D" uid="uid://cajxgfern3fn6" path="res://Assets 3D/Recipe Itens/Recipe Itens_Recipe Itens_BaseColor.png" id="1_y2gwp"]
+[ext_resource type="Texture2D" uid="uid://bdfc83yt76pr1" path="res://Assets 3D/Recipe Itens/Recipe Itens_Recipe Itens_OcclusionRoughnessMetallic.png" id="2_wcdyk"]
+[ext_resource type="Texture2D" uid="uid://cdajut2mc4d71" path="res://Assets 3D/Recipe Itens/Recipe Itens_Recipe Itens_Normal.png" id="3_h8t3i"]
+
+[resource]
+albedo_texture = ExtResource("1_y2gwp")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_wcdyk")
+metallic_texture_channel = 2
+roughness = 0.56
+roughness_texture = ExtResource("2_wcdyk")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_h8t3i")
+clearcoat_roughness = 0.0
+ao_enabled = true

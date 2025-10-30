@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ix4kjhbknyq"]
+
+[ext_resource type="Script" uid="uid://d1aqhekbw3oce" path="res://Scenes/Soul Cake/Soul_Cake-CLASS.gd" id="1_lbvn3"]
+[ext_resource type="PackedScene" uid="uid://b5mqumio0w1nj" path="res://Assets 3D/Soul Cake/Soul Cake.glb" id="2_lbvn3"]
+[ext_resource type="Material" uid="uid://chfrks7i1pbjo" path="res://Assets 3D/Soul Cake/Soul_Cake_MAT.tres" id="3_kk6yh"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="4_lbvn3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk6yh"]
+size = Vector3(1.5136719, 0.75367737, 1.2402344)
+
+[node name="SoulCake" type="Node3D"]
+script = ExtResource("1_lbvn3")
+Interact_Text = "Pick Soul Cake"
+
+[node name="Inspect_Object" parent="." instance=ExtResource("2_lbvn3")]
+
+[node name="RetopoFlow" parent="Inspect_Object" index="0"]
+surface_material_override/0 = ExtResource("3_kk6yh")
+
+[node name="InteractableZone" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("4_lbvn3")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.37000275, 0)
+shape = SubResource("BoxShape3D_kk6yh")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[editable path="Inspect_Object"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://be43dmtl7sdfs"]
+
+[ext_resource type="PackedScene" uid="uid://dmhhfsh5lf6y3" path="res://Scenes/Doors/Porta_Basica.tscn" id="1_0n5gd"]
+[ext_resource type="PackedScene" uid="uid://bansdvdv7sedh" path="res://Scenes/Key/Chave_Basica.tscn" id="2_bhsej"]
+[ext_resource type="PackedScene" uid="uid://ix4kjhbknyq" path="res://Scenes/Soul Cake/Soul_Cake.tscn" id="3_78sge"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3wroe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_biidh"]
+points = PackedVector3Array(1.0158731, 0.015873017, 1.0158731, -1.0158731, -0.015873017, -1.0158731, -1.0158731, 0.015873017, -1.0158731, 1.0158731, -0.015873017, -1.0158731, -1.0158731, -0.015873017, 1.0158731, -1.0158731, 0.015873017, 1.0158731, 1.0158731, 0.015873017, -1.0158731, 1.0158731, -0.015873017, 1.0158731)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3wroe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biidh"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.3529412)
+stencil_mode = 3
+stencil_flags = 2
+
+[sub_resource type="PrismMesh" id="PrismMesh_3wroe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtlm0"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0, 0.26666668, 1, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3wroe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxprx"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(1, 0.101960786, 0.078431375, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[node name="Stencil Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, -0.63687915, 0)
+mesh = SubResource("PlaneMesh_3wroe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_biidh")
+
+[node name="Window" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.1486746e-07, 0, -1.0000001, 0, 4.979261, 0, 2.627861, 0, -4.371139e-08, -3.15317, 2.47976, 8.558495)
+mesh = SubResource("QuadMesh_3wroe")
+surface_material_override/0 = SubResource("StandardMaterial3D_biidh")
+
+[node name="Prism" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3641458, 8.949543)
+mesh = SubResource("PrismMesh_3wroe")
+surface_material_override/0 = SubResource("StandardMaterial3D_vtlm0")
+
+[node name="Capsule" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3641458, 8.949543)
+mesh = SubResource("CapsuleMesh_3wroe")
+surface_material_override/0 = SubResource("StandardMaterial3D_cxprx")
+
+[node name="Basic_Door" parent="." instance=ExtResource("1_0n5gd")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Basic_Door2" parent="." instance=ExtResource("1_0n5gd")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -9.018239)
+
+[node name="ChaveBasica" parent="." node_paths=PackedStringArray("Doors_to_Open") instance=ExtResource("2_bhsej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49493515, -0.001958549, -4.068533)
+Doors_to_Open = [NodePath("../Basic_Door"), NodePath("../Basic_Door2")]
+
+[node name="SoulCake" parent="." instance=ExtResource("3_78sge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.176898, 0.60588384, -10.416889)

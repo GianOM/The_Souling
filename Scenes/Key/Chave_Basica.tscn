@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bansdvdv7sedh"]
+
+[ext_resource type="PackedScene" uid="uid://dra2jrbroy65a" path="res://Assets 3D/Basic Key.glb" id="1_4133k"]
+[ext_resource type="Script" uid="uid://ba2ocibai7p0a" path="res://Scenes/Key/Key_CLASS.gd" id="1_y5r4o"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="2_rjjgs"]
+[ext_resource type="AudioStream" uid="uid://bg88oq8m4y2fg" path="res://Sounds/SFX/Key/Key-pickup.mp3" id="4_p2vk5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2vk5"]
+size = Vector3(0.9177246, 0.38703918, 0.70996094)
+
+[node name="ChaveBasica" type="Node3D"]
+script = ExtResource("1_y5r4o")
+Interact_Text = "Pick Key"
+
+[node name="InteractableZone" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3064239, 0, 0)
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_rjjgs")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30114746, 0.18668437, -0.0012426972)
+shape = SubResource("BoxShape3D_p2vk5")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Basic Key" parent="." instance=ExtResource("1_4133k")]
+
+[node name="Pick Up Key Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_p2vk5")
+
+[editable path="Basic Key"]

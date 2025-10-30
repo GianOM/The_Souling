@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmf8xj8q6h2o"]
+
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="1_kfe30"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk2f2"]
+size = Vector3(1.4520569, 4.0216675, 4.033203)
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("1_kfe30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28466797, 1.0065308, 0)
+shape = SubResource("BoxShape3D_kk2f2")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)

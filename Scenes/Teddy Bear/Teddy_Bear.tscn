@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://byldtcbhmuqxw"]
+
+[ext_resource type="PackedScene" uid="uid://d1sfot2g57mgp" path="res://Scenes/Teddy Bear/Teddy Bear.glb" id="1_532uy"]
+[ext_resource type="Script" uid="uid://cnpfs6ug3pj8g" path="res://Inpectable_Object.gd" id="1_mtquj"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="2_ax84i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtquj"]
+size = Vector3(0.13183594, 0.28710938, 0.12866592)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3736"]
+size = Vector3(0.939209, 0.96295166, 0.8631592)
+
+[node name="TeddyBear" type="Node3D"]
+script = ExtResource("1_mtquj")
+Interact_Text = "Inspect Teddy Bear"
+
+[node name="Inspect_Object" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Target_Click" type="Area3D" parent="Inspect_Object"]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inspect_Object/Target_Click"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009913445, 0.01828003, 0.11947441)
+shape = SubResource("BoxShape3D_mtquj")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Teddy Bear" parent="Inspect_Object" instance=ExtResource("1_532uy")]
+
+[node name="InteractableZone" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_ax84i")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.15927124, 0.4968872)
+shape = SubResource("BoxShape3D_n3736")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Inspectable_Object_Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11184326, 0.90454525)
+fov = 51.3
+
+[editable path="Inspect_Object/Teddy Bear"]

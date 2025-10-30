@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwaad7bqahif8"
+path="res://.godot/imported/Item Pickup.mp3-285744720eb38e8c847031cc939b5a70.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/Recipe Itens/Item Pickup.mp3"
+dest_files=["res://.godot/imported/Item Pickup.mp3-285744720eb38e8c847031cc939b5a70.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

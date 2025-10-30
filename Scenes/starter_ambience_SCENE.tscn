@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd0evft6nks72"]
+
+[ext_resource type="PackedScene" uid="uid://bc0j3mlvcoa46" path="res://Scenes/Home.tscn" id="1_m63x4"]
+[ext_resource type="Script" uid="uid://cnkgvf8pofhsq" path="res://Scenes/starter_ambience_scene-SCRIPT.gd" id="1_uaant"]
+[ext_resource type="PackedScene" uid="uid://dnro33t2n4koo" path="res://Scenes/Player/Player_Character.tscn" id="2_uaant"]
+[ext_resource type="PackedScene" uid="uid://sm71me3bp7jf" path="res://Scenes/Shader_Compiler.tscn" id="3_3bgci"]
+[ext_resource type="Environment" uid="uid://bxaf0n6yy8dae" path="res://Scenes/Main_Dark_Environment.tres" id="3_8dfxx"]
+[ext_resource type="AudioStream" uid="uid://dv0nl3eq43u4o" path="res://Music/Intro_Rotten_Crops.wav" id="4_3bgci"]
+[ext_resource type="Script" uid="uid://7p0n1y16bbgo" path="res://Scenes/Ambient_Sound_Manager.gd" id="5_vlhel"]
+
+[node name="Starter_Ambience" type="Node3D"]
+script = ExtResource("1_uaant")
+
+[node name="Home" parent="." instance=ExtResource("1_m63x4")]
+
+[node name="ShaderCompiler" parent="." instance=ExtResource("3_3bgci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6536455, 1.5400617, 3.2165225)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_uaant")]
+transform = Transform3D(-0.62933403, 0, 0.77713495, 0, 1, 0, -0.77713495, 0, -0.62933403, -9.188558, 0.009389192, 3.7229316)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_8dfxx")
+
+[node name="Main_Ambient_Song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3bgci")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("5_vlhel")
+
+[node name="Main_Menu_Camera" type="Camera3D" parent="."]
+transform = Transform3D(-0.6819984, 0, 0.73135376, 0, 1, 0, -0.73135376, 0, -0.6819984, -6.35, 1.521, 1.0084643)
+current = true

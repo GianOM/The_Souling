@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://loru8yhrwl0v"]
+
+[ext_resource type="PackedScene" uid="uid://dk3xds6og2vn6" path="res://Assets 3D/Music Box/Music Box.glb" id="1_6x4vb"]
+
+[node name="MusicBoxScn" type="Node3D"]
+
+[node name="Music Box2" parent="." instance=ExtResource("1_6x4vb")]
+
+[editable path="Music Box2"]

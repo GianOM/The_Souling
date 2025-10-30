@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item_Position_Rotation" load_steps=2 format=3 uid="uid://doct7q8fj431m"]
+
+[ext_resource type="Script" uid="uid://bvpb8g6om8pbi" path="res://Scenes/Soul Cake/Global_Pos_of_Itens/Item_Position.gd" id="1_idxpi"]
+
+[resource]
+script = ExtResource("1_idxpi")
+Position_Name = "810"
+Position_Global_Pos = Vector3(-8.92, 0.908, -5.826)
+metadata/_custom_type_script = "uid://bvpb8g6om8pbi"

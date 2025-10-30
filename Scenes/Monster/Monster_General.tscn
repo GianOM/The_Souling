@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2s4ayb458bdb"]
+
+[ext_resource type="Script" uid="uid://ixmu3lth1v8p" path="res://Scenes/Monster/monster_general_SCRIPT.gd" id="1_5108u"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c61xq"]
+height = 1.866272
+radius = 1.0
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_c61xq"]
+section_length = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gq8p3"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5108u"]
+resource_local_to_scene = true
+next_pass = SubResource("StandardMaterial3D_gq8p3")
+albedo_color = Color(1, 0.05490196, 0.047058824, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(1, 0, 0, 1)
+
+[node name="MonsterGeneral" type="Node3D"]
+script = ExtResource("1_5108u")
+
+[node name="Kill_Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0168505, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kill_Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.0833282, 0)
+shape = SubResource("CylinderShape3D_c61xq")
+debug_color = Color(0.93698716, 0.2507987, 3.85046e-07, 1)
+
+[node name="Debug_Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.259748, 0)
+visible = false
+mesh = SubResource("TubeTrailMesh_c61xq")
+surface_material_override/0 = SubResource("StandardMaterial3D_5108u")
+
+[connection signal="body_entered" from="Kill_Area" to="." method="_on_kill_area_body_entered"]

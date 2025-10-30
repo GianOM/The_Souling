@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://p0j2qyw0ekxy"]
+
+[ext_resource type="Script" uid="uid://6c7o3r8dqhed" path="res://Scenes/Stove/stove_scene-CLASS.gd" id="1_hgxkm"]
+[ext_resource type="PackedScene" uid="uid://c28jlsabhx7sh" path="res://Scenes/Stove/Stove.glb" id="1_r8gy8"]
+[ext_resource type="AudioStream" uid="uid://dbmdcbm2i2jq1" path="res://Sounds/SFX/Stove/Oven Ding.mp3" id="2_6ayye"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="3_l5r3s"]
+[ext_resource type="PackedScene" uid="uid://35uclrnewlfq" path="res://Assets 3D/Recipe Itens/Salt.glb" id="4_bmhox"]
+[ext_resource type="PackedScene" uid="uid://bmfiqch4p7mr2" path="res://Assets 3D/Recipe Itens/Butter.glb" id="5_1o8x2"]
+[ext_resource type="PackedScene" uid="uid://ceyy3sp28rfrt" path="res://Assets 3D/Recipe Itens/Milk.glb" id="5_ac1ex"]
+[ext_resource type="PackedScene" uid="uid://cr14ce0hn8gx6" path="res://Assets 3D/Recipe Itens/Raisins.glb" id="5_v53iv"]
+[ext_resource type="PackedScene" uid="uid://3fjevpbj7qxh" path="res://Assets 3D/Recipe Itens/Sugar.glb" id="5_yiwy2"]
+[ext_resource type="Material" uid="uid://c2fws5f2wioeo" path="res://Assets 3D/Recipe Itens/Recipe_Itens_MAT.tres" id="6_gf2jt"]
+[ext_resource type="PackedScene" uid="uid://dglk2lp151soa" path="res://Assets 3D/Recipe Itens/Flour.glb" id="6_t7q66"]
+[ext_resource type="Shader" uid="uid://glsx3ygjw4s0" path="res://Scenes/Glass.gdshader" id="10_qlfmv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7q66"]
+size = Vector3(1.8771973, 1.0239868, 1.1612549)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bmhox"]
+size = Vector3(2.0314941, 1.5126953, 2.1726685)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4ayx"]
+render_priority = 0
+shader = ExtResource("10_qlfmv")
+shader_parameter/albedo = Color(1, 1, 1, 0)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[node name="StoveScene" type="Node3D"]
+script = ExtResource("1_hgxkm")
+Interact_Text = "Drop Item"
+
+[node name="Stove Ready Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31299162, 1.1312428, 0)
+stream = ExtResource("2_6ayye")
+volume_db = -20.0
+
+[node name="Stove" parent="." instance=ExtResource("1_r8gy8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stove/Fogao" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stove/Fogao/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49594116, -0.53460693)
+shape = SubResource("BoxShape3D_t7q66")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("3_l5r3s")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004211426, 0.7501831, -0.08407593)
+shape = SubResource("BoxShape3D_bmhox")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Itens" type="Node3D" parent="."]
+
+[node name="Raisins" parent="Itens" instance=ExtResource("5_v53iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5067264, 0.96325964, -0.2862383)
+visible = false
+
+[node name="Raisings" parent="Itens/Raisins" index="0"]
+transform = Transform3D(-0.9439797, 0, 0.33000383, 0, 1, 0, -0.33000383, 0, -0.9439797, -0.24416876, 0, -0.20488071)
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Butter2" parent="Itens" instance=ExtResource("5_1o8x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71591854, 0.99565446, -0.45743573)
+visible = false
+
+[node name="Butter" parent="Itens/Butter2" index="0"]
+transform = Transform3D(-0.9202318, 0, 0.39137372, 0, 1, 0, -0.39137372, 0, -0.9202318, 0.1113255, -0.034131527, 0.15076059)
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Sugar2" parent="Itens" instance=ExtResource("5_yiwy2")]
+transform = Transform3D(0.17127569, 0, -0.9852231, 0, 1, 0, 0.9852231, 0, 0.17127569, -0.51623976, 0.9764624, -0.5968164)
+visible = false
+
+[node name="Sugar" parent="Itens/Sugar2" index="0"]
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Salt2" parent="Itens" instance=ExtResource("4_bmhox")]
+transform = Transform3D(0.282375, 0, 0.9593042, 0, 1, 0, -0.9593042, 0, 0.282375, -0.46618533, 0.9645377, -0.21688873)
+visible = false
+
+[node name="Salt" parent="Itens/Salt2" index="0"]
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Salt_001" parent="Itens/Salt2" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_w4ayx")
+
+[node name="Milk2" parent="Itens" instance=ExtResource("5_ac1ex")]
+transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, -0.45792696, 0.9643602, -0.7735656)
+visible = false
+
+[node name="Milk" parent="Itens/Milk2" index="0"]
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Flour" parent="Itens" instance=ExtResource("6_t7q66")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, -0.6945725, 0.91986704, -0.8015848)
+visible = false
+
+[node name="Flour" parent="Itens/Flour" index="0"]
+lod_bias = 2.0
+surface_material_override/0 = ExtResource("6_gf2jt")
+
+[node name="Soul_Cake_Pos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62090147, 0.9634962, -0.12815225)
+gizmo_extents = 1.0
+
+[connection signal="child_exiting_tree" from="Soul_Cake_Pos" to="." method="_on_cookie_picked_Up"]
+
+[editable path="Stove"]
+[editable path="Itens/Raisins"]
+[editable path="Itens/Butter2"]
+[editable path="Itens/Sugar2"]
+[editable path="Itens/Salt2"]
+[editable path="Itens/Milk2"]
+[editable path="Itens/Flour"]

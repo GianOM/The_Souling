@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://sm71me3bp7jf"]
+
+[ext_resource type="PackedScene" uid="uid://ix4kjhbknyq" path="res://Scenes/Soul Cake/Soul_Cake.tscn" id="1_vh462"]
+[ext_resource type="PackedScene" uid="uid://dwt81ledra3xd" path="res://Scenes/Recipe_Itens.tscn" id="2_qywhv"]
+
+[node name="ShaderCompiler" type="Node3D"]
+
+[node name="SoulCake" parent="." instance=ExtResource("1_vh462")]
+
+[node name="RecipeItens" parent="." instance=ExtResource("2_qywhv")]

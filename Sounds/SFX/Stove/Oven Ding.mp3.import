@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbmdcbm2i2jq1"
+path="res://.godot/imported/Oven Ding.mp3-a3b12a027836c18d3221512ae6e80b0f.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/Stove/Oven Ding.mp3"
+dest_files=["res://.godot/imported/Oven Ding.mp3-a3b12a027836c18d3221512ae6e80b0f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

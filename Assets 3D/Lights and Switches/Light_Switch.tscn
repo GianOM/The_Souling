@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxidort6qtbi5"]
+
+[ext_resource type="PackedScene" uid="uid://k0r3ujbg5f5d" path="res://Assets 3D/Lights and Switches/Single Switch.glb" id="1_1vouw"]
+[ext_resource type="Script" uid="uid://q2shdirvv7od" path="res://Assets 3D/Lights and Switches/light_switch_CLASS.gd" id="1_rxw47"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="3_oi8lq"]
+[ext_resource type="AudioStream" uid="uid://ci10d88y6qhs8" path="res://Sounds/SFX/Lights/Light Switch.mp3" id="4_oi8lq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxq6k"]
+size = Vector3(0.21735859, 0.57055664, 0.46191406)
+
+[node name="LightSwitch" type="Node3D"]
+script = ExtResource("1_rxw47")
+Interact_Text = "Turn On / Off Light"
+
+[node name="Single Switch" parent="." instance=ExtResource("1_1vouw")]
+
+[node name="InteractableZone" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4353556, -1.0944425, 0)
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("3_oi8lq")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6486958, 1.090271, 0)
+shape = SubResource("BoxShape3D_sxq6k")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Light_Switch_Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_oi8lq")
+volume_db = 3.0
+pitch_scale = 1.1
+
+[editable path="Single Switch"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmhhfsh5lf6y3"]
+
+[ext_resource type="Script" uid="uid://75ds0opepn60" path="res://Scenes/Doors/Door_CLASS.gd" id="1_ne864"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="2_0jgi2"]
+[ext_resource type="PackedScene" uid="uid://dvuvadvd3rraq" path="res://Assets 3D/Doors/1 Door Basic.glb" id="3_ccx2i"]
+[ext_resource type="AudioStream" uid="uid://dtlla1igi436b" path="res://Sounds/SFX/Door/Door Open.wav" id="4_yx4bp"]
+[ext_resource type="AudioStream" uid="uid://ckvq47bue81oa" path="res://Sounds/SFX/Door/Door Locked.wav" id="5_ey5vb"]
+[ext_resource type="AudioStream" uid="uid://dllwip3c253pb" path="res://Sounds/SFX/Door/Door Close.mp3" id="6_waerm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey5vb"]
+size = Vector3(0.16595459, 1.7259521, 1.0881348)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jgi2"]
+size = Vector3(0.94750977, 2.5700684, 1.1738281)
+
+[node name="Basic_Door" type="Node3D"]
+script = ExtResource("1_ne864")
+Interact_Text = "Open / Close Door"
+
+[node name="1 Door Basic" parent="." instance=ExtResource("3_ccx2i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.2608175, 0)
+
+[node name="Skeleton3D" parent="1 Door Basic/Armature" index="0"]
+bones/0/rotation = Quaternion(0.50000006, -0.50000006, -0.49999994, -0.5)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="1 Door Basic/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0, -1, 5.9604645e-08, -1.7881393e-07, 0, 1, -1, -5.9604645e-08, -2.3841858e-07, 0, 0, 0)
+bone_name = "Door"
+bone_idx = 0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="1 Door Basic/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, -2.2457645e-07, 2.2457647e-07, 2.2457647e-07, -5.0434585e-14, -1, 2.2457645e-07, 1, 5.0434585e-14, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1 Door Basic/Armature/Skeleton3D/BoneAttachment3D/StaticBody3D"]
+transform = Transform3D(1, -4.0013836e-18, 0, 1.9512934e-22, 1, 0, 0, 0, 1, -0.0013122802, -0.2420044, -0.5645145)
+shape = SubResource("BoxShape3D_ey5vb")
+
+[node name="InteractableZone" type="Area3D" parent="1 Door Basic/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("Parent_Interactable_Object")]
+transform = Transform3D(-1, -2.3841858e-07, -1.5893256e-08, 4.3711378e-08, 5.9604645e-08, 1, -1.7881393e-07, 1, -2.8419357e-15, 0.28573817, 0.56185883, -1.1024382)
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_0jgi2")
+Parent_Interactable_Object = NodePath("../../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1 Door Basic/Armature/Skeleton3D/BoneAttachment3D/InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28466797, 1.2630005, 0)
+shape = SubResource("BoxShape3D_0jgi2")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Opening_Door_Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13651471, 1.1444921, -0.3366966)
+stream = ExtResource("4_yx4bp")
+volume_db = -20.0
+
+[node name="Locked_Door_Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13651471, 1.1444921, -0.3366966)
+stream = ExtResource("5_ey5vb")
+volume_db = -20.0
+
+[node name="Fechar_Porta_Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13651471, 1.1444921, 0.28413478)
+stream = ExtResource("6_waerm")
+volume_db = -20.0
+
+[editable path="1 Door Basic"]

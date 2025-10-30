@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvcxn574agxnk"]
+
+[ext_resource type="Script" uid="uid://d07blypombwce" path="res://Scenes/death_screen.gd" id="1_tviqd"]
+[ext_resource type="FontFile" uid="uid://caid5g6x1thm" path="res://Fonts/Digital Clock/DS-DIGIB.TTF" id="2_ogwek"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tviqd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Retry Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_top = -349.0
+offset_right = 763.0
+offset_bottom = -258.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Retry"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1189.0
+offset_top = -349.0
+offset_right = 1352.0
+offset_bottom = -258.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="You Died Text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.5
+offset_top = -362.5
+offset_right = 242.5
+offset_bottom = -225.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="Stats Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -244.0
+offset_right = 408.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 47
+alignment = 1
+
+[node name="Time_of_Death" type="HBoxContainer" parent="Stats Container"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Time of Death Text" type="Label" parent="Stats Container/Time_of_Death"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Time of Death : "
+
+[node name="Death Clock" type="Label" parent="Stats Container/Time_of_Death"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ogwek")
+theme_override_font_sizes/font_size = 80
+text = "18 : 00"
+
+[node name="SoulsCakes Delivered Line" type="HBoxContainer" parent="Stats Container"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Num of SoulCakes tedxt" type="Label" parent="Stats Container/SoulsCakes Delivered Line"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Number of Soul Cakes Delivered : "
+
+[node name="Total_SoulCakes_Number" type="Label" parent="Stats Container/SoulsCakes Delivered Line"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "4"
+
+[connection signal="pressed" from="Retry Button" to="." method="_on_Retry_Button_Clicked"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_Button_Clicked"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=17 format=3 uid="uid://dwt81ledra3xd"]
+
+[ext_resource type="Script" uid="uid://dbyxginfombdl" path="res://Scenes/recipe_itens-SCRIPT.gd" id="1_70h5t"]
+[ext_resource type="PackedScene" uid="uid://dglk2lp151soa" path="res://Assets 3D/Recipe Itens/Flour.glb" id="1_cbhdt"]
+[ext_resource type="PackedScene" uid="uid://cr14ce0hn8gx6" path="res://Assets 3D/Recipe Itens/Raisins.glb" id="2_11s0a"]
+[ext_resource type="PackedScene" uid="uid://ceyy3sp28rfrt" path="res://Assets 3D/Recipe Itens/Milk.glb" id="2_21nyw"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="3_31d8q"]
+[ext_resource type="Material" uid="uid://c2fws5f2wioeo" path="res://Assets 3D/Recipe Itens/Recipe_Itens_MAT.tres" id="3_lj3dl"]
+[ext_resource type="PackedScene" uid="uid://35uclrnewlfq" path="res://Assets 3D/Recipe Itens/Salt.glb" id="4_j46vn"]
+[ext_resource type="PackedScene" uid="uid://3fjevpbj7qxh" path="res://Assets 3D/Recipe Itens/Sugar.glb" id="5_x83gw"]
+[ext_resource type="PackedScene" uid="uid://bmfiqch4p7mr2" path="res://Assets 3D/Recipe Itens/Butter.glb" id="6_dowdg"]
+[ext_resource type="AudioStream" uid="uid://cwaad7bqahif8" path="res://Sounds/SFX/Recipe Itens/Item Pickup.mp3" id="6_lpvk3"]
+[ext_resource type="Shader" uid="uid://glsx3ygjw4s0" path="res://Scenes/Glass.gdshader" id="7_htfui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htfui"]
+render_priority = 0
+shader = ExtResource("7_htfui")
+shader_parameter/albedo = Color(1, 1, 1, 0.19607843)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21nyw"]
+size = Vector3(1.5136719, 1.741951, 1.2402344)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j46vn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpvk3"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.50980395, 0.627451, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x83gw"]
+next_pass = SubResource("StandardMaterial3D_lpvk3")
+shading_mode = 0
+albedo_color = Color(0.50980395, 0.627451, 0, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.50980395, 0.627451, 0, 1)
+
+[node name="RecipeItens" type="Node3D"]
+script = ExtResource("1_70h5t")
+
+[node name="Raisins" parent="." instance=ExtResource("2_11s0a")]
+visible = false
+
+[node name="Raisings" parent="Raisins" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="Milk2" parent="." instance=ExtResource("2_21nyw")]
+visible = false
+
+[node name="Milk" parent="Milk2" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="Flour" parent="." instance=ExtResource("1_cbhdt")]
+visible = false
+
+[node name="Flour" parent="Flour" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="Salt2" parent="." instance=ExtResource("4_j46vn")]
+
+[node name="Salt" parent="Salt2" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="Salt_001" parent="Salt2" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_htfui")
+
+[node name="Sugar2" parent="." instance=ExtResource("5_x83gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015029602, 0)
+visible = false
+
+[node name="Sugar" parent="Sugar2" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="Butter2" parent="." instance=ExtResource("6_dowdg")]
+visible = false
+
+[node name="Butter" parent="Butter2" index="0"]
+surface_material_override/0 = ExtResource("3_lj3dl")
+
+[node name="InteractableZone" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+process_mode = 4
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("3_31d8q")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.86413956, 0)
+shape = SubResource("BoxShape3D_21nyw")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Cheat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2560519, 0)
+visible = false
+mesh = SubResource("SphereMesh_j46vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_x83gw")
+
+[node name="Pick_Up_Item" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_lpvk3")
+volume_db = -20.0
+
+[editable path="Raisins"]
+[editable path="Milk2"]
+[editable path="Flour"]
+[editable path="Salt2"]
+[editable path="Sugar2"]
+[editable path="Butter2"]
