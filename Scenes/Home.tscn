@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=4 uid="uid://bc0j3mlvcoa46"]
+[gd_scene load_steps=148 format=4 uid="uid://bc0j3mlvcoa46"]
 
 [ext_resource type="Script" uid="uid://d1vxt54tqy8wx" path="res://Scenes/Environment_Manager.gd" id="1_h3sw8"]
 [ext_resource type="PackedScene" uid="uid://c1jm78p3sreid" path="res://Assets 3D/Main House V1.glb" id="2_67m2w"]
@@ -254,6 +254,9 @@ cull_mode = 2
 albedo_color = Color(0.56, 0.56, 0.56, 1)
 albedo_texture = ExtResource("3_h3sw8")
 roughness = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8v7s"]
+size = Vector3(0.876709, 0.98547363, 5.7978516)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hte6"]
 resource_name = "wood.001"
@@ -524,7 +527,19 @@ data = PackedVector3Array(14.5861, -10.0946, 3.4329, 8.382999, -7.6117997, 3.432
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r1wms"]
 points = PackedVector3Array(0.095633745, 0.46871042, 0.25644308, 0.0069347024, 0.46841156, 0.28871894, 0.05418712, 0.46861076, 0.28035694, 0.07595867, 0.46861076, 0.27019745, 0.8236111, 0.44998443, 0.52004224, 0.11256719, 0.46861076, 0.23940647, 0.12643653, 0.46851122, 0.2197127, 0.13659656, 0.46841156, 0.19790891, 0.13659656, 0.46761477, 0.103582144, 0.11256719, 0.4671167, 0.062084615, 0.05418712, 0.46641946, 0.021134138, -0.062089324, 0.46582186, 0.03129363, -0.08176434, 0.46582186, 0.04504797, -0.130952, 0.46641946, 0.15078461, -0.11256713, 0.4671167, 0.2197127, -0.08176434, 0.46761477, 0.25644308, 0.030964077, 0.46851122, 0.28660893, -0.062089324, 0.46781397, 0.27019745, -0.040317714, 0.46801317, 0.28035694, -0.017094672, 0.46821237, 0.28660893, -0.82377225, 0.44998443, 0.52004224, 0.8236111, 0.39978278, 0.52004224, 0.8236111, 0.44998443, -0.27833575, 0.14272487, 0.46821237, 0.17469844, 0.1448214, 0.46801317, 0.15070647, 0.14272487, 0.46781397, 0.12679264, 0.095633745, 0.46681786, 0.04504797, 0.07595867, 0.46661866, 0.03129363, 0.030964077, 0.46622026, 0.014882177, -0.017094672, 0.4659214, 0.014882177, -0.040317714, 0.46582186, 0.021134138, -0.82377225, 0.44998443, -0.27833575, -0.11256713, 0.4659214, 0.08177838, -0.12885547, 0.46622026, 0.12679264, -0.12885547, 0.46661866, 0.17469844, -0.82377225, 0.39978278, 0.52004224, 0.7434594, -0.54886854, 0.4659626, 0.8236111, 0.39759147, 0.32966942, -0.00016123056, 0.3954001, 0.52004224, 0.8236111, 0.39978278, -0.27833575, 0.0069347024, 0.46602106, 0.012772113, -0.82377225, 0.39978278, -0.27833575, -0.82377225, 0.39759147, 0.32966942, -0.7436206, -0.54886854, 0.4659626, 0.7434594, -0.54886854, -0.22433427, 0.8236111, 0.39579856, 0.120306194, 0.8236111, 0.39759147, -0.08913517, 0.43462545, -0.37605143, -0.23808862, 0.42414278, -0.37754554, -0.23808862, -0.00016123056, 0.3954001, -0.27833575, -0.42430398, -0.37754554, -0.23808862, -0.4347866, -0.37605143, -0.23808862, -0.7436206, -0.54886854, -0.22433427, -0.82377225, 0.39759147, -0.08913517, -0.82377225, 0.39579856, 0.120306194)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rhux"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.63664097, 0.2875721, 0.9998228, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f015c"]
+next_pass = SubResource("StandardMaterial3D_2rhux")
 shading_mode = 0
 vertex_color_use_as_albedo = true
 stencil_mode = 2
@@ -889,6 +904,12 @@ shape = SubResource("ConvexPolygonShape3D_rqhhq")
 [node name="Walls_023" parent="Main House V1" index="97"]
 surface_material_override/0 = SubResource("StandardMaterial3D_r6qu3")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Main House V1/Cube_014" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Main House V1/Cube_014/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5324068, -1.3111191, 0)
+shape = SubResource("BoxShape3D_c8v7s")
+
 [node name="Walls_019" parent="Main House V1" index="107"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6hte6")
 
@@ -1249,6 +1270,34 @@ transform = Transform3D(0.7797428, 0, 0.7758874, 0, 1.1, 0, -0.7758874, 0, 0.779
 [node name="Upper_Floor_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08178091, 7.074881, 0.115188956)
 
+[node name="Kids_Room_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.430997, 7.074881, -7.5609794)
+does_light_starts_on = false
+
+[node name="Visitors_Room_1_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.809559, 7.074881, 6.691335)
+does_light_starts_on = false
+
+[node name="Common_Bathroom_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.360577, 7.074881, -0.6080024)
+does_light_starts_on = false
+
+[node name="Visitors_Room_2_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2746415, 7.074881, 6.691335)
+does_light_starts_on = false
+
+[node name="Parents_Room_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.172902, 7.074881, -0.4932351)
+does_light_starts_on = false
+
+[node name="Parents_Bathroom Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.412486, 7.074881, 9.144083)
+does_light_starts_on = false
+
+[node name="Parents_Office_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9301777, 7.074881, -8.96491)
+does_light_starts_on = false
+
 [node name="Main Corridor_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315, 3.565, 3.2267964)
 
@@ -1266,6 +1315,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0321035, -1.271, -13.007727
 
 [node name="Library_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5570326, 3.5747104, -7.4334254)
+does_light_starts_on = false
 
 [node name="Main_Corridor_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.459899, 1.4149169, 1.5923489)
@@ -1276,7 +1326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.126906, 1.4149169, 6.139611
 Lights_to_Affect = [NodePath("../Dining Room Light")]
 
 [node name="Library_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.6086648, 1.4149168, -4.7759533)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.6086648, 1.4149168, -4.487468)
 Lights_to_Affect = [NodePath("../Library_Light")]
 
 [node name="Pantry_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
@@ -1286,6 +1336,34 @@ Lights_to_Affect = [NodePath("../Pantry_Light")]
 [node name="Upper_Floor_Corridor_Light_Switch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.467523, 5.095998, -2.6994114)
 Lights_to_Affect = [NodePath("../Upper_Floor_Light")]
+
+[node name="Common_Bathroom_Light_Switch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.255558, 5.095998, 0.21132225)
+Lights_to_Affect = [NodePath("../Common_Bathroom_Light")]
+
+[node name="Kids_Room_LighSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.0333443, 5.095998, -2.8488045)
+Lights_to_Affect = [NodePath("../Kids_Room_Light")]
+
+[node name="Visitors_1_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.669897, 5.095998, 1.5020572)
+Lights_to_Affect = [NodePath("../Visitors_Room_1_Light")]
+
+[node name="Visitors_2_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.7188313, 5.095998, 1.5020572)
+Lights_to_Affect = [NodePath("../Visitors_Room_2_Light")]
+
+[node name="Parents_Room_LighSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.620996, 5.095998, 0.872718)
+Lights_to_Affect = [NodePath("../Parents_Room_Light")]
+
+[node name="Parents_Bathroom_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.229947, 5.095998, 6.237843)
+Lights_to_Affect = [NodePath("../Parents_Bathroom Light")]
+
+[node name="Parents_Office_LighSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.5609, 5.095998, -6.196784)
+Lights_to_Affect = [NodePath("../Parents_Office_Light")]
 
 [node name="Kitchen_Light_Switch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1367376, 1.2668966, -11.138013)
