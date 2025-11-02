@@ -73,10 +73,11 @@ func Interact():
 			
 		
 		
-		if Player_Reference:
+		if Player_Reference and (Player_Reference.List_of_Itens_Held_by_Player.size() > 0):
 			
 				
 			var My_Item: Recipe_Item.Item_ID = Player_Reference.List_of_Itens_Held_by_Player.pop_back()
+			
 			match My_Item:
 				## Flour
 				0:

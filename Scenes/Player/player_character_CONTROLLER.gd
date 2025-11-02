@@ -25,17 +25,14 @@ const PLAYER_CAMERA_SPEED: float = 0.001
 @export var Player_Foot_Steps_Tick: float
 var Player_Distance: float = 120
 
-
 var rot : Vector3
 var mouse_axis: Vector2 = Vector2.ZERO
-
 
 var is_Player_Active: bool = false
 
 @onready var interactable_ray_cast: RayCast3D = $"Camera3D/Interactable RayCast"
 
 var List_of_Itens_Held_by_Player: Array[Recipe_Item.Item_ID]
-
 
 @onready var video_stream_player: VideoStreamPlayer = $Jumpscare/VideoStreamPlayer
 
@@ -95,17 +92,25 @@ func _ready() -> void:
 func Activate_Player():
 	
 	camera_3d.make_current()
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	is_Player_Active = true
 	
-	player_ui.show()
+	$"Player UI/Interactable_Keyboard_Hint".show()
+	
+	#player_ui.show()
 	
 	
 func Deactivate_Player():
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 	is_Player_Active = false
 	
-	player_ui.hide()
+	$"Player UI/Interactable_Keyboard_Hint".hide()
+	
+	#player_ui.hide()
 	
 	
 func Kill_the_Player():

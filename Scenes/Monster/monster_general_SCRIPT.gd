@@ -39,8 +39,8 @@ func _set_monsters_to_Kill_Mode():
 func _on_kill_area_body_entered(body: Node3D) -> void:
 	
 	
-	#if body is Jogador and is_Monster_Active and Can_Monster_Kill_Player:
-	if body is Jogador and is_Monster_Active:
+	if body is Jogador and is_Monster_Active and Can_Monster_Kill_Player:
+	#if body is Jogador and is_Monster_Active:
 		
 		GlobalEvents.Player_is_Kill.emit()
 		print("Player is Ded")

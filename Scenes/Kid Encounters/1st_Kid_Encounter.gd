@@ -74,23 +74,24 @@ func _ready() -> void:
 	#dialogue_main.Dialogue_Advanced.connect()
 	
 func Activate_Encounter():
+	
 	show()
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
 	dialogue_main.Dialogues = Kid_1_Dialogues
 	
-
 #So ativamos a zona de interacao quando o Player faz um Soul Cake
 func Interact():
+	#BUG: Interagir mto rapido break it
+	Zone.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	Has_Recieved_Cookie = true
 	
 	GlobalEvents.Reset_Itens_Positions.emit()
 	
-	Zone.process_mode = Node.PROCESS_MODE_DISABLED
-	
 	GlobalEvents.MINUS_One_Soul_Cake_Added.emit()
 	
+	GlobalEvents.Allow_Monsters_to_Kill_Player.emit()
 	
 func _on_Dialogue_Advanced():
 	
@@ -117,7 +118,6 @@ func _Hands_Invisible():
 		
 		Has_Recieved_Cookie = false
 		
-		print("I'M OUT")
 		baby_hands.hide()
 	
 		

@@ -59,7 +59,6 @@ bones/19/rotation = Quaternion(-0.6564443, -0.043956123, 0.03281314, 0.75237757)
 bones/20/rotation = Quaternion(-0.40278012, -0.0071309386, 0.04804806, 0.914007)
 
 [node name="Mao_1" parent="Baby Hands/Braco 1/Skeleton3D" index="0"]
-"blend_shapes/Hold Fix" = 1.0
 surface_material_override/0 = SubResource("StandardMaterial3D_3b2yy")
 
 [node name="Skeleton3D" parent="Baby Hands/Bucker" index="0"]
