@@ -23,11 +23,6 @@ func _ready() -> void:
 		
 	Possible_Active_Monster.shuffle()
 	
-	
-	#_Switch_Active_Monster()
-	
-	
-	
 	for i in range(pick_up_itens.get_child_count()):
 		Possible_Itens.append(pick_up_itens.get_child(i))
 	

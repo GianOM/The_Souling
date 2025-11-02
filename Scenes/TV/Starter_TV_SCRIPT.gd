@@ -99,6 +99,9 @@ func Set_New_Monster_Position(My_Monster:Monstro):
 	
 	monster_camera_pov.global_rotation = My_Monster.Camera_3d_that_Sees_me.rotation
 	
+	
+	monster_camera_pov.fov = My_Monster.Camera_3d_that_Sees_me.fov
+	
 func Interact():
 	
 	if static_sound.stream_paused:

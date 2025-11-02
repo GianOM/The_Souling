@@ -20,4 +20,5 @@ ambient_light_energy = 0.01
 tonemap_mode = 1
 tonemap_white = 16.0
 adjustment_enabled = true
-adjustment_contrast = 0.78
+adjustment_brightness = 1.17
+adjustment_contrast = 0.81

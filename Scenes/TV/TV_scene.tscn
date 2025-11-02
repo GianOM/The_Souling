@@ -101,7 +101,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Monster_Camera_POV" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.39531004, 0.9999588, 0)
 cull_mask = 3
-fov = 120.0
+fov = 90.0
 far = 150.0
 
 [node name="Hour_Time" type="Label3D" parent="."]
