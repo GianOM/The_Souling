@@ -83,15 +83,18 @@ func Activate_Encounter():
 #So ativamos a zona de interacao quando o Player faz um Soul Cake
 func Interact():
 	#BUG: Interagir mto rapido break it
-	Zone.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	Has_Recieved_Cookie = true
-	
-	GlobalEvents.Reset_Itens_Positions.emit()
-	
-	GlobalEvents.MINUS_One_Soul_Cake_Added.emit()
-	
-	GlobalEvents.Allow_Monsters_to_Kill_Player.emit()
+	if not Has_Recieved_Cookie:
+		Has_Recieved_Cookie = true
+		
+		Zone.process_mode = Node.PROCESS_MODE_DISABLED
+		
+		GlobalEvents.Reset_Itens_Positions.emit()
+		
+		GlobalEvents.MINUS_One_Soul_Cake_Added.emit()
+		
+		GlobalEvents.Allow_Monsters_to_Kill_Player.emit()
+		GlobalEvents.Unlock_All_Doors.emit()
 	
 func _on_Dialogue_Advanced():
 	

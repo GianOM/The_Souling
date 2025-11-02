@@ -19,9 +19,13 @@ var is_door_Open: bool = false
 @onready var fechar_porta_sound: AudioStreamPlayer3D = $Fechar_Porta_Sound
 
 func _ready() -> void:
+	
 	animation_player.animation_finished.connect(_allow_player_to_interact)
-
-
+	
+	GlobalEvents.Unlock_All_Doors.connect(Unlock_Door)
+	
+	
+	
 func Interact():
 	
 	if Can_I_Interact:
@@ -86,6 +90,12 @@ func _sequence_on_Opened_Door():
 		
 		
 	fechar_porta_sound.play()
+	
+	
+func Unlock_Door():
+	
+	is_Door_Locked = false
+	
 	
 	
 func _allow_player_to_interact(_anim_name: StringName):

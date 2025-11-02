@@ -22,12 +22,16 @@ signal Deactivate_Player
 signal Play_Door_Bell_Sound
 
 @warning_ignore("unused_signal")
+signal Unlock_All_Doors
+
+@warning_ignore("unused_signal")
 signal Move_Monster_to_Location
 
 
 #region Monster Region Signal
 @warning_ignore("unused_signal")
 signal Allow_Monsters_to_Kill_Player
+
 
 
 #endregion

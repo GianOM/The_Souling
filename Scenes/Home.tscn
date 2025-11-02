@@ -618,6 +618,9 @@ shadow_mesh = SubResource("ArrayMesh_cljb7")
 [node name="Home" type="Node3D"]
 script = ExtResource("1_h3sw8")
 
+[node name="Monster_Switch_Timer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="Main House V1" parent="." instance=ExtResource("2_67m2w")]
 
 [node name="Barricadas" parent="Main House V1" index="0"]
@@ -1209,12 +1212,15 @@ stream = ExtResource("5_c8v7s")
 
 [node name="Basic_Door" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.7505825, 0, -1.876642)
+is_Door_Locked = true
 
 [node name="Basic_Door2" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.3267145, 0, -2.297286)
+is_Door_Locked = true
 
 [node name="Basic_Door3" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.5541806, 0, -5.6743493)
+is_Door_Locked = true
 is_Door_Reversed = true
 
 [node name="Basic_Door4" parent="Doors" instance=ExtResource("2_oauki")]
@@ -1222,6 +1228,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.05
 
 [node name="Basic_Door5" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 10.1045685, 0, -2.0193434)
+is_Door_Locked = true
 
 [node name="Basic_Door6" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 10.110936, 0, 1.8824539)
@@ -1229,28 +1236,35 @@ is_Door_Reversed = true
 
 [node name="Basic_Door7" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 2.075, 0, 3.9277792)
+is_Door_Locked = true
 
 [node name="Basic_Door8" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, 2.075, 0, 4.9795365)
+is_Door_Locked = true
 is_Door_Reversed = true
 
 [node name="Basic_Door9" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5332308, 3.755044, -0.34785277)
+is_Door_Locked = true
 
 [node name="Basic_Door13" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.6344934, 3.755044, -6.141981)
 
 [node name="Basic_Door10" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 5.297751, 3.7525141, 1.4115158)
+is_Door_Locked = true
 
 [node name="Basic_Door15" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.2720766, 3.7525141, 1.4115158)
+is_Door_Locked = true
 
 [node name="Basic_Door11" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.177415, 3.755044, -0.63656324)
+is_Door_Locked = true
 
 [node name="Basic_Door12" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.2445273, 3.7540183, -2.7867672)
+is_Door_Locked = true
 
 [node name="Basic_Door14" parent="Doors" instance=ExtResource("2_oauki")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.080903, 3.755044, 6.131321)
@@ -1452,9 +1466,6 @@ Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_05")
 [node name="MonsterGeneral17" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.038745, 0, 3.6545935)
 Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_05")
-
-[node name="Monster_Switch_Timer" type="Timer" parent="."]
-wait_time = 35.0
 
 [node name="Pick Up Itens" type="Node3D" parent="."]
 
@@ -1706,7 +1717,7 @@ cull_mask = 3
 fov = 90.2
 far = 150.0
 
-[connection signal="timeout" from="Monster_Controller/Monster_Event_Timer" to="Monster_Controller" method="_on_Monster_Event_Timer_Timeout"]
 [connection signal="timeout" from="Monster_Switch_Timer" to="." method="_Switch_Active_Monster"]
+[connection signal="timeout" from="Monster_Controller/Monster_Event_Timer" to="Monster_Controller" method="_on_Monster_Event_Timer_Timeout"]
 
 [editable path="Main House V1"]

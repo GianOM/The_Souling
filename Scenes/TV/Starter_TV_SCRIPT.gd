@@ -20,7 +20,7 @@ var Tick_TV: float = 0.05
 
 @onready var timer: Timer = $"../Monster_Switch_Timer"
 
-var is_Screen_Obfuscated: bool = false
+var is_Screen_Obfuscated: bool = true
 
 
 const Initial_Time : float = 1080
@@ -30,16 +30,6 @@ var Total_Play_Time: float = 0
 @onready var hour_time: Label3D = $Hour_Time
 
 
-
-
-#func _ready() -> void:
-	
-	#Embaralhamos uma vez apenas para evitar que a mesma pos seja spammada
-	#Possible_Monster_Locations.shuffle()
-	
-	
-	#_Set_New_Monster_Position()
-	
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	
@@ -72,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if timer.time_left <= 7 and not is_Screen_Obfuscated:
+		print(timer.time_left)
 		_Start_Screen_Obfuscation()
 	
 
@@ -79,6 +70,8 @@ func _physics_process(delta: float) -> void:
 func _Start_Screen_Obfuscation():
 	
 	is_Screen_Obfuscated = true
+	
+	#print("ESTOU OBFUSCANDO")
 	
 	var Temp_Tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	

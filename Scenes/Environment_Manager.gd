@@ -20,11 +20,11 @@ func _ready() -> void:
 	
 	for i in range(monsters.get_child_count()):
 		Possible_Active_Monster.append(monsters.get_child(i))
+		
 	Possible_Active_Monster.shuffle()
-	_Switch_Active_Monster()
 	
 	
-	monster_switch_timer.start()
+	#_Switch_Active_Monster()
 	
 	
 	
@@ -35,14 +35,39 @@ func _ready() -> void:
 	
 	GlobalEvents.Reset_Itens_Positions.connect(_set_up_Itens)
 	
+	GlobalEvents.Allow_Monsters_to_Kill_Player.connect(Start_Monster_Hunter)
+	
+	
+	
+func Start_Monster_Hunter():
+	
+	monster_switch_timer.start()
+	
+	
+	#Fazemos isso para que a TV possa entrar no modo de revelar o monstro
+	tv_scene.is_Screen_Obfuscated = false
+	
+	print("Monster Timer Started")
+	
+	
 func _Switch_Active_Monster():
+	
+	
+	monster_switch_timer.wait_time = 35.0
+	
+	monster_switch_timer.start()
+	
 	if Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active:
+		
 		Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active = false
 		Possible_Active_Monster[IDX_Active_Monster].Debug_Mesh.scale = Vector3.ZERO
 	
 	if (IDX_Active_Monster + 1) < Possible_Active_Monster.size():
+		
 		IDX_Active_Monster += 1
+		
 	else:
+		
 		IDX_Active_Monster = 0
 		
 		
@@ -76,5 +101,3 @@ func _set_up_Itens():
 	Possible_Itens.shuffle()
 		
 		
-
-	
