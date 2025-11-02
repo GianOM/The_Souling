@@ -48,19 +48,16 @@ stencil_color = Color(0.50980395, 0.627451, 0, 1)
 script = ExtResource("1_70h5t")
 
 [node name="Raisins" parent="." instance=ExtResource("2_11s0a")]
-visible = false
 
 [node name="Raisings" parent="Raisins" index="0"]
 surface_material_override/0 = ExtResource("3_lj3dl")
 
 [node name="Milk2" parent="." instance=ExtResource("2_21nyw")]
-visible = false
 
 [node name="Milk" parent="Milk2" index="0"]
 surface_material_override/0 = ExtResource("3_lj3dl")
 
 [node name="Flour" parent="." instance=ExtResource("1_cbhdt")]
-visible = false
 
 [node name="Flour" parent="Flour" index="0"]
 surface_material_override/0 = ExtResource("3_lj3dl")
@@ -75,13 +72,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_htfui")
 
 [node name="Sugar2" parent="." instance=ExtResource("5_x83gw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015029602, 0)
-visible = false
 
 [node name="Sugar" parent="Sugar2" index="0"]
 surface_material_override/0 = ExtResource("3_lj3dl")
 
 [node name="Butter2" parent="." instance=ExtResource("6_dowdg")]
-visible = false
 
 [node name="Butter" parent="Butter2" index="0"]
 surface_material_override/0 = ExtResource("3_lj3dl")

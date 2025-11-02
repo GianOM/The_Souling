@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd0evft6nks72"]
+[gd_scene load_steps=12 format=3 uid="uid://cd0evft6nks72"]
 
 [ext_resource type="PackedScene" uid="uid://bc0j3mlvcoa46" path="res://Scenes/Home.tscn" id="1_m63x4"]
 [ext_resource type="Script" uid="uid://cnkgvf8pofhsq" path="res://Scenes/starter_ambience_scene-SCRIPT.gd" id="1_uaant"]
@@ -7,6 +7,14 @@
 [ext_resource type="Environment" uid="uid://bxaf0n6yy8dae" path="res://Scenes/Main_Dark_Environment.tres" id="3_8dfxx"]
 [ext_resource type="AudioStream" uid="uid://dv0nl3eq43u4o" path="res://Music/Intro_Rotten_Crops.wav" id="4_3bgci"]
 [ext_resource type="Script" uid="uid://7p0n1y16bbgo" path="res://Scenes/Ambient_Sound_Manager.gd" id="5_vlhel"]
+[ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="8_n7mdi"]
+[ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="9_hw40o"]
+[ext_resource type="Script" uid="uid://bxsk7uywkd145" path="res://addons/postfx/effects/ChromaticAberrationFX.gd" id="10_xxonh"]
+
+[sub_resource type="Resource" id="Resource_dd4u4"]
+script = ExtResource("10_xxonh")
+strength = 2.5
+metadata/_custom_type_script = "uid://bxsk7uywkd145"
 
 [node name="Starter_Ambience" type="Node3D"]
 script = ExtResource("1_uaant")
@@ -31,3 +39,9 @@ script = ExtResource("5_vlhel")
 [node name="Main_Menu_Camera" type="Camera3D" parent="."]
 transform = Transform3D(-0.6819984, 0, 0.73135376, 0, 1, 0, -0.73135376, 0, -0.6819984, -6.35, 1.521, 1.0084643)
 current = true
+
+[node name="PostFX" type="CanvasLayer" parent="."]
+script = ExtResource("8_n7mdi")
+effects = Array[ExtResource("9_hw40o")]([SubResource("Resource_dd4u4")])
+always_update = true
+metadata/_custom_type_script = "uid://d15nobs3uuxeb"

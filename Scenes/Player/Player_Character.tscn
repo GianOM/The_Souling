@@ -1,11 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnro33t2n4koo"]
+[gd_scene load_steps=20 format=3 uid="uid://dnro33t2n4koo"]
 
 [ext_resource type="Script" uid="uid://darjw4v4t46w5" path="res://Scenes/Player/player_character_CONTROLLER.gd" id="1_relvh"]
 [ext_resource type="Texture2D" uid="uid://dsdr2oqwcdjcu" path="res://Assets 2D/E_Key.png" id="2_8j6iy"]
+[ext_resource type="PackedScene" uid="uid://35uclrnewlfq" path="res://Assets 3D/Recipe Itens/Salt.glb" id="2_amcxq"]
+[ext_resource type="PackedScene" uid="uid://ceyy3sp28rfrt" path="res://Assets 3D/Recipe Itens/Milk.glb" id="2_n8xn3"]
+[ext_resource type="PackedScene" uid="uid://3fjevpbj7qxh" path="res://Assets 3D/Recipe Itens/Sugar.glb" id="2_qgoe2"]
 [ext_resource type="Script" uid="uid://c6dulvuuwixsg" path="res://Scenes/Player/Player_Inventory_UI.gd" id="3_0ady0"]
+[ext_resource type="PackedScene" uid="uid://cr14ce0hn8gx6" path="res://Assets 3D/Recipe Itens/Raisins.glb" id="3_sxkef"]
+[ext_resource type="Material" uid="uid://c2fws5f2wioeo" path="res://Assets 3D/Recipe Itens/Recipe_Itens_MAT.tres" id="3_sytv8"]
 [ext_resource type="Script" uid="uid://b8bg6ypu3lidg" path="res://Scenes/Player/in_game_menu.gd" id="3_t54iw"]
 [ext_resource type="AudioStream" uid="uid://dhu8pvdmemj40" path="res://Sounds/SFX/Player/Footstep.mp3" id="3_uf3k5"]
 [ext_resource type="Texture2D" uid="uid://d3gl7hq5bxbra" path="res://Assets 3D/Soul Cake/Icon Souls Cake.png" id="3_v20yi"]
+[ext_resource type="PackedScene" uid="uid://bmfiqch4p7mr2" path="res://Assets 3D/Recipe Itens/Butter.glb" id="4_8rl30"]
+[ext_resource type="Shader" uid="uid://glsx3ygjw4s0" path="res://Scenes/Glass.gdshader" id="5_s078f"]
+[ext_resource type="PackedScene" uid="uid://dglk2lp151soa" path="res://Assets 3D/Recipe Itens/Flour.glb" id="7_pudak"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tljgk"]
+render_priority = 0
+shader = ExtResource("5_s078f")
+shader_parameter/albedo = Color(1, 1, 1, 0)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2m4ky"]
 radius = 0.25
@@ -29,8 +45,55 @@ Player_Foot_Steps_Tick = 0.6
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5677311, -0.23908958)
+cull_mask = 1
 fov = 60.0
 far = 150.0
+
+[node name="Milk2" parent="Camera3D" instance=ExtResource("2_n8xn3")]
+transform = Transform3D(-0.25031233, 0, 0.96816486, 0, 1, 0, -0.968165, 0, -0.25031233, 0.21233338, -0.3394761, -0.3599994)
+visible = false
+
+[node name="Milk" parent="Camera3D/Milk2" index="0"]
+surface_material_override/0 = ExtResource("3_sytv8")
+
+[node name="Salt2" parent="Camera3D" instance=ExtResource("2_amcxq")]
+transform = Transform3D(0.17799498, -0.07612752, -0.981082, -7.450581e-09, 0.997003, -0.07736292, 0.9840313, 0.013770208, 0.17746152, 0.117029205, -0.26658964, -0.33097878)
+visible = false
+
+[node name="Salt" parent="Camera3D/Salt2" index="0"]
+surface_material_override/0 = ExtResource("3_sytv8")
+
+[node name="Salt_001" parent="Camera3D/Salt2" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_tljgk")
+
+[node name="Butter2" parent="Camera3D" instance=ExtResource("4_8rl30")]
+transform = Transform3D(0.6813983, 0, 0.73191285, 0, 1, 0, -0.73191285, 0, 0.6813983, -0.16606691, -0.24046016, -0.30569813)
+visible = false
+
+[node name="Butter" parent="Camera3D/Butter2" index="0"]
+surface_material_override/0 = ExtResource("3_sytv8")
+
+[node name="Raisins" parent="Camera3D" instance=ExtResource("3_sxkef")]
+transform = Transform3D(0.29867435, 0, -0.9543552, 0, 1, 0, 0.9543552, 0, 0.29867435, -0.33582819, -0.33859193, -0.50954753)
+visible = false
+
+[node name="Raisings" parent="Camera3D/Raisins" index="0"]
+surface_material_override/0 = ExtResource("3_sytv8")
+
+[node name="Flour2" parent="Camera3D" instance=ExtResource("7_pudak")]
+transform = Transform3D(0.6946583, 0, -0.71933985, 0, 1, 0, 0.71933985, 0, 0.6946583, -0.09630393, -0.35803926, -0.57670397)
+visible = false
+
+[node name="Flour" parent="Camera3D/Flour2" index="0"]
+surface_material_override/0 = ExtResource("3_sytv8")
+
+[node name="Sugar2" parent="Camera3D" instance=ExtResource("2_qgoe2")]
+transform = Transform3D(0.8775481, 0, -0.4794885, 0, 1, 0, 0.4794885, 0, 0.8775481, 0, -0.33859193, -0.36995158)
+visible = false
+
+[node name="Sugar" parent="Camera3D/Sugar2" index="0"]
+layers = 524289
+surface_material_override/0 = ExtResource("3_sytv8")
 
 [node name="Interactable RayCast" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -0.35)
@@ -215,5 +278,32 @@ stream = ExtResource("3_uf3k5")
 volume_db = -35.0
 pitch_scale = 1.27
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Itens_Camera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5677311, -0.23908958)
+visible = false
+cull_mask = 524288
+fov = 60.0
+far = 150.0
+
 [connection signal="pressed" from="Player UI/In_Game_Menu/Continue_Button" to="Player UI/In_Game_Menu" method="_on_Continue_Button_pressed"]
 [connection signal="pressed" from="Player UI/In_Game_Menu/Quit_Button" to="Player UI/In_Game_Menu" method="_on_Quit_Button_Pressed"]
+
+[editable path="Camera3D/Milk2"]
+[editable path="Camera3D/Salt2"]
+[editable path="Camera3D/Butter2"]
+[editable path="Camera3D/Raisins"]
+[editable path="Camera3D/Flour2"]
+[editable path="Camera3D/Sugar2"]

@@ -1074,6 +1074,7 @@ shape = SubResource("ConvexPolygonShape3D_lgvu7")
 shape = SubResource("ConcavePolygonShape3D_h3sw8")
 
 [node name="Second Store Roof" parent="Main House V1" index="152"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015529156, 7.030962, 0.0058112144)
 surface_material_override/0 = SubResource("StandardMaterial3D_67m2w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Main House V1/Entrance Door" index="0"]
@@ -1384,98 +1385,96 @@ Interact_Text = "Give Soul Cake"
 
 [node name="Monsters" type="Node3D" parent="."]
 
-[node name="MonsterGeneral" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74253035, 0, -1.5405143)
-My_Camera_Global_Rotation = Vector3(-0.082, 2.731, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_06")
 
-[node name="MonsterGeneral2" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6596494, -2.3841858e-07, 4.341333)
-My_Camera_Global_Rotation = Vector3(-0.081, 1.578, 0)
+[node name="MonsterGeneral3" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1542544, 0, 5.010357)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_01")
 
-[node name="MonsterGeneral3" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3984, 0, 4.302303)
-My_Camera_Global_Rotation = Vector3(-0.297, 2.129, 0)
-
-[node name="MonsterGeneral4" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.325, 0, -1.43)
-My_Camera_Global_Rotation = Vector3(-0.125, 1.645, 0)
-
-[node name="MonsterGeneral5" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral5" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46, 0, -5.446)
-My_Camera_Global_Rotation = Vector3(-0.026, -0.073, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_13")
 
-[node name="MonsterGeneral6" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral6" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863, 0, -9.582)
-My_Camera_Global_Rotation = Vector3(0.335, -3.12, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_13")
 
-[node name="MonsterGeneral21" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral21" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2622008, 3.746636, 2.1280994)
-My_Camera_Global_Rotation = Vector3(0.335, -3.12, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_09")
 
-[node name="MonsterGeneral22" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.364003, 3.746636, 2.1280994)
-My_Camera_Global_Rotation = Vector3(0.335, -3.12, 0)
+[node name="MonsterGeneral22" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6313033, 3.746636, 3.216413)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_04")
 
-[node name="MonsterGeneral7" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral7" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735, 3.78, -2.51)
-My_Camera_Global_Rotation = Vector3(-0.627, 0.066, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_13")
 
-[node name="MonsterGeneral8" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.549, 3.78, -0.616)
-My_Camera_Global_Rotation = Vector3(-0.04, 1.625, 0)
+[node name="MonsterGeneral8" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.354579, 3.78, -0.616)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_08")
 
-[node name="MonsterGeneral18" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.936985, 3.78, -7.2495666)
-My_Camera_Global_Rotation = Vector3(-0.04, 1.625, 0)
+[node name="MonsterGeneral18" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.285787, 3.7800002, -4.187611)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_10")
 
-[node name="MonsterGeneral19" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.056821, 3.78, -8.779114)
-My_Camera_Global_Rotation = Vector3(-0.04, 1.625, 0)
+[node name="MonsterGeneral19" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.752197, 3.78, -7.2627935)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_07")
 
-[node name="MonsterGeneral20" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.056821, 3.78, -0.41740084)
-My_Camera_Global_Rotation = Vector3(-0.04, 1.625, 0)
-
-[node name="MonsterGeneral9" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71, 0, -9.23)
-My_Camera_Global_Rotation = Vector3(-0.14, 1.59, 0)
-
-[node name="MonsterGeneral10" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral10" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.959, 3.78, 6.25)
-My_Camera_Global_Rotation = Vector3(-0.08, 3.09, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_11")
 
-[node name="MonsterGeneral11" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.394, 3.78, -0.462)
-My_Camera_Global_Rotation = Vector3(-0.084, -2.14, 0)
-
-[node name="MonsterGeneral12" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral12" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 3.78, -0.46)
-My_Camera_Global_Rotation = Vector3(-0.353, -0.047, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_13")
 
-[node name="MonsterGeneral13" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.667376, 0, -0.23315)
-My_Camera_Global_Rotation = Vector3(-0.165, -3.118, 0)
+[node name="MonsterGeneral13" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2751822, 2.3841858e-07, 1.5320143)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_01")
 
-[node name="MonsterGeneral14" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.79, 0, -5.78)
-My_Camera_Global_Rotation = Vector3(-0.117, -2.434, 0)
+[node name="MonsterGeneral14" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.608472, 0, -5.197645)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_02")
 
-[node name="MonsterGeneral15" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05, 0, 0.09)
-My_Camera_Global_Rotation = Vector3(-0.1, -0.035, 0)
+[node name="MonsterGeneral15" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21511, 0, -5.197645)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_02")
 
-[node name="MonsterGeneral16" parent="Monsters" instance=ExtResource("12_67m2w")]
+[node name="MonsterGeneral16" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, 0, 5.299)
-My_Camera_Global_Rotation = Vector3(-0.05, -0.106, 0)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_05")
 
-[node name="MonsterGeneral17" parent="Monsters" instance=ExtResource("12_67m2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37, 0, 9.887)
-My_Camera_Global_Rotation = Vector3(-0.07, -1.518, 0)
+[node name="MonsterGeneral17" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.038745, 0, 3.6545935)
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_05")
 
 [node name="Monster_Switch_Timer" type="Timer" parent="."]
 wait_time = 35.0
 
 [node name="Pick Up Itens" type="Node3D" parent="."]
+
+[node name="Tutorial_Item_1" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(0.32914668, 0, 0.94427884, 0, 1, 0, -0.94427884, 0, 0.32914668, 4.5759974, 0.9815483, -11.3059025)
+
+[node name="Tutorial_Item_2" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(0.733706, 0, 0.6794671, 0, 1, 0, -0.6794671, 0, 0.733706, 4.858628, 0.9815483, -11.266517)
+
+[node name="Tutorial_Item_3" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(-0.15155429, 0, 0.9884489, 0, 1, 0, -0.9884489, 0, -0.15155429, 4.6435146, 0.98154837, -11.071248)
+
+[node name="Tutorial_Item_4" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(0.27024776, 0, -0.96279085, 0, 1, 0, 0.96279085, 0, 0.27024776, 4.960612, 0.9815484, -11.045336)
+
+[node name="Tutorial_Item_5" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(-0.99549603, 0, 0.094803125, 0, 1, 0, -0.094803125, 0, -0.99549603, 5.380408, 0.9815483, -11.127875)
+
+[node name="Tutorial_Item_6" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
+transform = Transform3D(-0.035597086, 0, -0.9993662, 0, 1, 0, 0.9993662, 0, -0.035597086, 5.125998, 0.9815483, -11.372444)
 
 [node name="RecipeItens2" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6.1861076, 0.5637716, 3.0347955)
@@ -1536,9 +1535,6 @@ transform = Transform3D(0.99938726, 0, 0.035004273, 0, 1, 0, -0.035004273, 0, 0.
 
 [node name="RecipeItens9" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
 transform = Transform3D(-0.035004318, 0, 0.99938726, 0, 1, 0, -0.99938726, 0, -0.035004318, 3.0053074, 0.9815483, -3.0650349)
-
-[node name="RecipeItens10" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
-transform = Transform3D(-0.035004318, 0, 0.99938726, 0, 1, 0, -0.99938726, 0, -0.035004318, 4.7417097, 0.9815483, -11.127875)
 
 [node name="RecipeItens11" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
 transform = Transform3D(0.8078767, 0, 0.58935165, 0, 1, 0, -0.58935165, 0, 0.8078767, 10.46001, 0.9815483, -10.5755005)
@@ -1629,6 +1625,86 @@ transform = Transform3D(0.9993738, 0, -0.035387784, 0, 1, 0, 0.035387784, 0, 0.9
 
 [node name="RecipeItens51" parent="Pick Up Itens" instance=ExtResource("14_0yer6")]
 transform = Transform3D(0.9993738, 0, -0.035387784, 0, 1, 0, 0.035387784, 0, 0.9993738, -10.926067, 4.754103, -7.095195)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="Monster_Camera_POV_02" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.37195122, 0, -0.92825234, 0, 1, 0, 0.92825234, 0, -0.37195122, 2.420095, 1.7859602, -10.816946)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_11" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.024938341, 0, -0.99968904, 0, 1, 0, 0.999689, 0, -0.024938343, -9.163534, 5.0925746, 6.9521246)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_07" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.2862068, 0, -0.95816785, 0, 1, 0, 0.95816785, 0, -0.2862068, -7.1722035, 4.1463957, -9.357611)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_09" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.98122543, 0, 0.1928645, 0, 1, 0, -0.1928645, 0, 0.98122543, 2.0097558, 4.771446, 8.9894905)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_04" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.8512327, 0, 0.52478844, 0, 1, 0, -0.5247884, 0, 0.85123277, 10.8534355, 4.461879, 11.422234)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_08" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.17907697, 0, 0.9838351, 0, 1, 0, -0.9838351, 0, 0.17907697, 11.867134, 4.732504, 0.29244938)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_10" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.28354666, 0, 0.9589585, 0, 1, 0, -0.95895845, 0, -0.2835467, 10.996297, 4.418414, -7.2109623)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_05" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.6587683, 0, -0.752346, 0, 1, 0, 0.752346, 0, 0.6587683, 2.4559348, 1.7115574, 7.075543)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_06" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.999125, 0, 0.041823383, 0, 1, 0, -0.041823383, 0, 0.999125, -0.4803437, 1.7115574, 0.9586155)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_01" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.55962694, 0, 0.8287447, 0, 1, 0, -0.8287447, 0, -0.55962694, -4.355008, 1.7859602, -0.03372681)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_13" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.9997586, 0.00457647, 0.021490017, 0, 0.97806776, -0.20828728, -0.021971911, -0.208237, -0.9778316, 0.7288552, 0.62180436, -11.35475)
+cull_mask = 3
+fov = 90.0
+far = 150.0
+
+[node name="Monster_Camera_POV_12" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.9156346, 0, 0.40201172, 0, 1, 0, -0.40201172, 0, -0.9156346, -3.7055943, 1.4987803, -4.914331)
+cull_mask = 3
+fov = 90.2
+far = 150.0
+
+[node name="Monster_Camera_POV_03" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.99799937, -0.021111498, 0.059597194, 1.8626451e-09, 0.9426065, 0.33390558, -0.063225955, -0.3332375, 0.9407206, 0.65501773, 1.5855341, -2.3562462)
+cull_mask = 3
+fov = 90.2
+far = 150.0
 
 [connection signal="timeout" from="Monster_Controller/Monster_Event_Timer" to="Monster_Controller" method="_on_Monster_Event_Timer_Timeout"]
 [connection signal="timeout" from="Monster_Switch_Timer" to="." method="_Switch_Active_Monster"]

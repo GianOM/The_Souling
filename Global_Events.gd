@@ -25,6 +25,14 @@ signal Play_Door_Bell_Sound
 signal Move_Monster_to_Location
 
 
+#region Monster Region Signal
+@warning_ignore("unused_signal")
+signal Allow_Monsters_to_Kill_Player
+
+
+#endregion
+
+
 
 #region Player Inventory Signals
 
@@ -37,6 +45,9 @@ signal MINUS_One_Soul_Cake_Added
 
 @warning_ignore("unused_signal")
 signal Add_Recipe_Item_to_Player
+
+@warning_ignore("unused_signal")
+signal Remove_Recipe_Item_from_Player
 
 
 #endregion

@@ -2,6 +2,15 @@ class_name Jogador extends CharacterBody3D
 
 
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var itens_camera: Camera3D = $SubViewportContainer/SubViewport/Itens_Camera
+
+@onready var milk: Node3D = $Camera3D/Milk2
+@onready var salt: Node3D = $Camera3D/Salt2
+@onready var butter: Node3D = $Camera3D/Butter2
+@onready var raisins: Node3D = $Camera3D/Raisins
+@onready var flour: Node3D = $Camera3D/Flour2
+@onready var sugar: Node3D = $Camera3D/Sugar2
+
 
 @onready var player_ui: Control = $"Player UI"
 @onready var interactable_keyboard_hint: TextureRect = $"Player UI/Interactable_Keyboard_Hint"
@@ -9,7 +18,7 @@ class_name Jogador extends CharacterBody3D
 var Current_Interactable_Object: Objeto_Interagivel
 var is_Interaction_available: bool = false
 
-const PLAYER_SPEED: float = 3
+var Player_Speed: float = 3
 const PLAYER_CAMERA_SPEED: float = 0.001
 
 @onready var player_footsteps: AudioStreamPlayer3D = $"Player Footsteps"
@@ -52,6 +61,19 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("B_KEY"):
 		print_rich("[color=green]Position: %s[/color]" % str(camera_3d.global_position - Vector3(0,1.56,0)))
 		print_rich("[color=red]Position: %s[/color]" % str(camera_3d.global_rotation))
+		
+		
+		
+		#A cull mask do Monstro so e visivel pela camera da TV
+		#Logo, para visualizar o Monstro na camera original, precisamos 
+		#trocar o estado da Cull Mask da cam principal pra ver ele tbm
+		if camera_3d.get_cull_mask_value(2):
+		
+			camera_3d.set_cull_mask_value(2, false)
+			
+		else:
+			
+			camera_3d.set_cull_mask_value(2, true)
 	
 
 func _ready() -> void:
@@ -60,6 +82,7 @@ func _ready() -> void:
 	GlobalEvents.Player_Left_Interactable_Range.connect(_Hide_Interation_Button)
 	
 	GlobalEvents.Add_Recipe_Item_to_Player.connect(_add_item_to_Player)
+	GlobalEvents.Remove_Recipe_Item_from_Player.connect(Remove_Item_from_Player)
 	
 	
 	GlobalEvents.Activate_Player.connect(Activate_Player)
@@ -144,13 +167,16 @@ func handle_Player_Movement(Delta_Time: float):
 			velocity.y -= 9.8 * Delta_Time
 			#print("Im not on floor")
 		
-		velocity.x = movement_direction.x * PLAYER_SPEED
-		velocity.z = movement_direction.z * PLAYER_SPEED
+		velocity.x = movement_direction.x * Player_Speed
+		velocity.z = movement_direction.z * Player_Speed
 		
 		move_and_slide()
 		
 		
 		Player_Distance -= movement_direction.length()
+		
+		itens_camera.global_position = camera_3d.global_position
+		itens_camera.rotation = camera_3d.rotation
 		
 	
 	
@@ -185,37 +211,70 @@ func _add_item_to_Player(Item_Added: Recipe_Item.Item_ID):
 	
 	match Item_Added:
 	#TODO: Trocar a malha e o Interact Text baseado neste numero
-	
 		## Flour
 		0:
-			
-			print("Flour added to Player")
+			flour.show()
+			Player_Speed -= 0.7
 			
 		## Milk
 		1:
-			
-			print("Milk added to Player")
+			milk.show()
+			Player_Speed -= 0.3
 			
 		## Salt
 		2:
-			
-			print("Salt added to Player")
+			Player_Speed -= 0.1
+			salt.show()
 			
 		## Sugar
 		3:
-			
-			print("Sugar added to Player")
+			Player_Speed -= 0.3
+			sugar.show()
 			
 		## Butter
 		4:
-			
-			print("Butter added to Player")
+			Player_Speed -= 0.2
+			butter.show()
 			
 		## Raisings
 		5:
-			
-			print("Raisings added to Player")
+			Player_Speed -= 0.15
+			raisins.show()
 	
+func Remove_Item_from_Player(Item_Removed: Recipe_Item.Item_ID):
+	
+		match Item_Removed:
+			#TODO: Trocar a malha e o Interact Text baseado neste numero
+			## Flour
+			0:
+				flour.hide()
+				Player_Speed += 0.7
+				
+			## Milk
+			1:
+				milk.hide()
+				Player_Speed += 0.3
+				
+			## Salt
+			2:
+				salt.hide()
+				Player_Speed += 0.1
+				
+			## Sugar
+			3:
+				sugar.hide()
+				Player_Speed += 0.25
+				
+			## Butter
+			4:
+				butter.hide()
+				Player_Speed += 0.2
+				
+				
+			## Raisings
+			5:
+				raisins.hide()
+				Player_Speed += 0.15
 	
 	
 	

@@ -98,9 +98,13 @@ func _deobfuscate_Screen():
 	
 func Set_New_Monster_Position(My_Monster:Monstro):
 	
-	monster_camera_pov.global_position = My_Monster.global_position + Vector3(0,1.5,0)
 	
-	monster_camera_pov.global_rotation = My_Monster.My_Camera_Global_Rotation
+	
+	monster_camera_pov.global_position = My_Monster.Camera_3d_that_Sees_me.global_position
+	
+	#monster_camera_pov.position.z += 3
+	
+	monster_camera_pov.global_rotation = My_Monster.Camera_3d_that_Sees_me.rotation
 	
 func Interact():
 	

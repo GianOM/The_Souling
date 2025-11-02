@@ -74,38 +74,45 @@ func Interact():
 		
 		
 		if Player_Reference:
+			
 				
-			match Player_Reference.List_of_Itens_Held_by_Player.pop_back():
+			var My_Item: Recipe_Item.Item_ID = Player_Reference.List_of_Itens_Held_by_Player.pop_back()
+			match My_Item:
 				## Flour
 				0:
 					flour.show()
 					Stove_has_Flour = true
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				## Milk
 				1:
 					milk.show()
 					Stove_has_Milk = true
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				## Salt
 				2:
 					salt.show()
 					Stove_has_Salt = true
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				## Sugar
 				3:
 					sugar.show()
 					Stove_has_Sugar = true
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				## Butter
 				4:
 					butter.show()
 					Stove_has_Butter = true
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				## Raisings
 				5:
 					raisins.show()
 					Stove_has_Raisins = true
-					pass
+					GlobalEvents.Remove_Recipe_Item_from_Player.emit(My_Item)
 					
 				null:
 					print("CABECUDO")

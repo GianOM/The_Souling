@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/postfx/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -87,6 +91,8 @@ B_KEY={
 
 [layer_names]
 
+3d_render/layer_1="Everything"
+3d_render/layer_2="Monster Cull Mask"
 3d_physics/layer_9="Interactable Objects"
 3d_physics/layer_10="Inspectable Areas"
 

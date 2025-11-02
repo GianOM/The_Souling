@@ -31,7 +31,6 @@ func _ready() -> void:
 	for i in range(pick_up_itens.get_child_count()):
 		Possible_Itens.append(pick_up_itens.get_child(i))
 	
-	Possible_Itens.shuffle()
 	_set_up_Itens()
 	
 	GlobalEvents.Reset_Itens_Positions.connect(_set_up_Itens)
@@ -39,6 +38,7 @@ func _ready() -> void:
 func _Switch_Active_Monster():
 	if Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active:
 		Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active = false
+		Possible_Active_Monster[IDX_Active_Monster].Debug_Mesh.scale = Vector3.ZERO
 	
 	if (IDX_Active_Monster + 1) < Possible_Active_Monster.size():
 		IDX_Active_Monster += 1
@@ -47,6 +47,8 @@ func _Switch_Active_Monster():
 		
 		
 	Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active = true
+	
+	Possible_Active_Monster[IDX_Active_Monster].Make_Visible()
 	
 	tv_scene.Set_New_Monster_Position(Possible_Active_Monster[IDX_Active_Monster])
 	
@@ -67,6 +69,11 @@ func _set_up_Itens():
 			IDX_Possible_Item += 1
 		else:
 			IDX_Possible_Item = 0
+			
+			
+			
+			
+	Possible_Itens.shuffle()
 		
 		
 

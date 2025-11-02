@@ -17,3 +17,4 @@ normal_enabled = true
 normal_texture = ExtResource("3_h8t3i")
 clearcoat_roughness = 0.0
 ao_enabled = true
+stencil_flags = 6
