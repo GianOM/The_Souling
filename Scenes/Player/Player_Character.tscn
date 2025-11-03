@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnro33t2n4koo"]
+[gd_scene load_steps=21 format=3 uid="uid://dnro33t2n4koo"]
 
 [ext_resource type="Script" uid="uid://darjw4v4t46w5" path="res://Scenes/Player/player_character_CONTROLLER.gd" id="1_relvh"]
 [ext_resource type="Texture2D" uid="uid://dsdr2oqwcdjcu" path="res://Assets 2D/E_Key.png" id="2_8j6iy"]
 [ext_resource type="PackedScene" uid="uid://35uclrnewlfq" path="res://Assets 3D/Recipe Itens/Salt.glb" id="2_amcxq"]
 [ext_resource type="PackedScene" uid="uid://ceyy3sp28rfrt" path="res://Assets 3D/Recipe Itens/Milk.glb" id="2_n8xn3"]
 [ext_resource type="PackedScene" uid="uid://3fjevpbj7qxh" path="res://Assets 3D/Recipe Itens/Sugar.glb" id="2_qgoe2"]
+[ext_resource type="PackedScene" uid="uid://cphekjuhh251r" path="res://Assets 3D/VHS Tape/VHS Tape.glb" id="2_s078f"]
 [ext_resource type="Script" uid="uid://c6dulvuuwixsg" path="res://Scenes/Player/Player_Inventory_UI.gd" id="3_0ady0"]
 [ext_resource type="PackedScene" uid="uid://cr14ce0hn8gx6" path="res://Assets 3D/Recipe Itens/Raisins.glb" id="3_sxkef"]
 [ext_resource type="Material" uid="uid://cf10f4tsg0vr0" path="res://Assets 3D/Recipe Itens/Recipe_Itens_MAT_NO_DEPTH_TEST.tres" id="3_sytv8"]
 [ext_resource type="Script" uid="uid://b8bg6ypu3lidg" path="res://Scenes/Player/in_game_menu.gd" id="3_t54iw"]
+[ext_resource type="Material" uid="uid://cqp5ajky2d3i6" path="res://Assets 3D/VHS Tape/VHS Tape Material.tres" id="3_tljgk"]
 [ext_resource type="AudioStream" uid="uid://dhu8pvdmemj40" path="res://Sounds/SFX/Player/Footstep.mp3" id="3_uf3k5"]
 [ext_resource type="Texture2D" uid="uid://d3gl7hq5bxbra" path="res://Assets 3D/Soul Cake/Icon Souls Cake.png" id="3_v20yi"]
 [ext_resource type="PackedScene" uid="uid://bmfiqch4p7mr2" path="res://Assets 3D/Recipe Itens/Butter.glb" id="4_8rl30"]
@@ -31,9 +33,6 @@ height = 1.8
 radius = 0.3071289
 height = 1.8231446
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_relvh"]
-length = 0.15
-
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_0ady0"]
 file = "res://Scenes/Player/JumpScare2.ogv"
 
@@ -48,6 +47,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5677311, -0.23908958)
 cull_mask = 1
 fov = 60.0
 far = 150.0
+
+[node name="VHS Tape2" parent="Camera3D" instance=ExtResource("2_s078f")]
+transform = Transform3D(-1.1313341e-08, 4.222196e-08, 1, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, -4.371139e-08, 0, -0.159, -0.4)
+visible = false
+
+[node name="VHS Tape" parent="Camera3D/VHS Tape2" index="0"]
+surface_material_override/0 = ExtResource("3_tljgk")
 
 [node name="Milk2" parent="Camera3D" instance=ExtResource("2_n8xn3")]
 transform = Transform3D(-0.25031233, 0, 0.96816486, 0, 1, 0, -0.968165, 0, -0.25031233, 0.21233338, -0.3394761, -0.3599994)
@@ -111,22 +117,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91140133, 0)
 shape = SubResource("CapsuleShape3D_relvh")
-
-[node name="Front_Stairs_Coll" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 0, 0.15828392, -0.27322108)
-shape = SubResource("SeparationRayShape3D_relvh")
-
-[node name="Back_Stairs_Coll" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 0, 0.15828392, 0.2752448)
-shape = SubResource("SeparationRayShape3D_relvh")
-
-[node name="Left_Stairs_Coll" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 0.269684, 0.15544397, -0.0006606579)
-shape = SubResource("SeparationRayShape3D_relvh")
-
-[node name="Right_Side_Coll" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, -0.27402094, 0.15373999, -0.0006606579)
-shape = SubResource("SeparationRayShape3D_relvh")
 
 [node name="Player UI" type="Control" parent="."]
 layout_mode = 3
@@ -299,6 +289,7 @@ far = 150.0
 [connection signal="pressed" from="Player UI/In_Game_Menu/Continue_Button" to="Player UI/In_Game_Menu" method="_on_Continue_Button_pressed"]
 [connection signal="pressed" from="Player UI/In_Game_Menu/Quit_Button" to="Player UI/In_Game_Menu" method="_on_Quit_Button_Pressed"]
 
+[editable path="Camera3D/VHS Tape2"]
 [editable path="Camera3D/Milk2"]
 [editable path="Camera3D/Salt2"]
 [editable path="Camera3D/Butter2"]

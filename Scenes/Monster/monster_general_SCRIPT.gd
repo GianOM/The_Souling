@@ -26,7 +26,6 @@ func _ready() -> void:
 	GlobalEvents.Allow_Monsters_to_Kill_Player.connect(_set_monsters_to_Kill_Mode)
 	
 	
-	
 func Make_Visible():
 	
 	Debug_Mesh.scale = Vector3(1,1,1)

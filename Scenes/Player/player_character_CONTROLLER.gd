@@ -11,6 +11,8 @@ class_name Jogador extends CharacterBody3D
 @onready var flour: Node3D = $Camera3D/Flour2
 @onready var sugar: Node3D = $Camera3D/Sugar2
 
+@onready var vhs_tape: Node3D = $"Camera3D/VHS Tape2"
+var Player_has_Tape: bool = false
 
 @onready var player_ui: Control = $"Player UI"
 @onready var interactable_keyboard_hint: TextureRect = $"Player UI/Interactable_Keyboard_Hint"
@@ -81,11 +83,12 @@ func _ready() -> void:
 	GlobalEvents.Add_Recipe_Item_to_Player.connect(_add_item_to_Player)
 	GlobalEvents.Remove_Recipe_Item_from_Player.connect(Remove_Item_from_Player)
 	
-	
 	GlobalEvents.Activate_Player.connect(Activate_Player)
 	GlobalEvents.Deactivate_Player.connect(Deactivate_Player)
 	
 	GlobalEvents.Player_is_Kill.connect(Kill_the_Player)
+	
+	GlobalEvents.Add_Tape_to_Player.connect(on_Tape_Added)
 	
 	
 	
@@ -282,4 +285,12 @@ func Remove_Item_from_Player(Item_Removed: Recipe_Item.Item_ID):
 				Player_Speed += 0.15
 	
 	
+func on_Tape_Added():
+	vhs_tape.show()
+	Player_has_Tape = true
 	
+func Remove_Tape_from_Player():
+	vhs_tape.hide()
+	Player_has_Tape = false
+	
+	pass

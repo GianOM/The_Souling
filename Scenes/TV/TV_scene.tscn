@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbuy4f0gnmknk"]
+[gd_scene load_steps=16 format=3 uid="uid://dbuy4f0gnmknk"]
 
 [ext_resource type="PackedScene" uid="uid://34ex8vqdnd24" path="res://Assets 3D/TV.glb" id="1_c47rq"]
 [ext_resource type="Script" uid="uid://doubluwx08ttd" path="res://Scenes/TV/Starter_TV_SCRIPT.gd" id="1_rlg0s"]
@@ -6,19 +6,27 @@
 [ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="2_swlln"]
 [ext_resource type="AudioStream" uid="uid://b6udpxab4iurc" path="res://Sounds/SFX/TV/TV Turn ON.wav" id="4_d1ihs"]
 [ext_resource type="AudioStream" uid="uid://bvmjtqrv3mp5k" path="res://Sounds/SFX/TV/TV Turn Off.wav" id="5_lvish"]
+[ext_resource type="Script" uid="uid://5nn0ny6urft1" path="res://Scenes/TV/vhs_player-CLASS.gd" id="7_0mr4s"]
 [ext_resource type="FontFile" uid="uid://caid5g6x1thm" path="res://Fonts/Digital Clock/DS-DIGIB.TTF" id="7_qc576"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qc576"]
-size = Vector3(0.5593262, 1.1914063, 0.32080078)
+size = Vector3(0.5593262, 0.7102051, 0.82125854)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rlg0s"]
 points = PackedVector3Array(-0.42221132, 0.72650576, -0.47060934, 0.28919452, 1.3031615, 0.5873115, 0.3210777, 1.1105176, -0.36823627, 0.21526475, -0.010445356, 0.52005476, -0.444829, 1.2330674, 0.45720318, 0.21526475, -0.010445356, -0.5163438, -0.2077573, -0.010445356, 0.52005476, -0.2983, 1.3008876, -0.5432115, -0.2077573, -0.010445356, -0.5163438, 0.29098994, 1.3063413, -0.5865244, 0.29985386, 0.6242545, 0.58342826, -0.2983, 1.2808892, 0.5668316, 0.29985386, 0.6242545, -0.5797173, -0.44598648, 1.2348185, -0.45489946, -0.405403, 0.70260847, 0.40926954, -0.2983, 0.6466541, -0.5631206, 0.18778467, 1.3273573, 0.5696641, -0.2983, 0.6466541, 0.5668316, 0.29156604, 1.3280921, -0.56669575, -0.2983, 1.3008876, 0.5469225, -0.2983, 1.2808892, -0.5631206, 0.2911518, 1.3273346, 0.56975585, -0.42676252, 1.2572049, -0.45637655, 0.18808047, 1.3281147, -0.56660396, -0.4258535, 1.2556984, 0.45891896, 0.30967802, 1.2208519, -0.48062637, 0.3210777, 1.0894449, -0.36823627, -0.42385674, 1.2117538, -0.47281843)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk2f2"]
+size = Vector3(0.8671875, 0.3022461, 1.0820313)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8vbmn"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hi7d2"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ihs"]
 resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_8vbmn")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_operator = 1
@@ -41,7 +49,7 @@ script = ExtResource("2_swlln")
 Parent_Interactable_Object = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677124, 1.0065308, -0.4267578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677124, 0.97076416, -0.17652893)
 shape = SubResource("BoxShape3D_qc576")
 debug_color = Color(0.9676674, 0, 0.46974695, 1)
 
@@ -70,6 +78,22 @@ volume_db = -20.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TV2/TV/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_rlg0s")
 
+[node name="VHS Player" parent="TV2" index="1"]
+script = ExtResource("7_0mr4s")
+Interact_Text = "Insert Tape"
+
+[node name="Area3D" type="Area3D" parent="TV2/VHS Player" index="0" node_paths=PackedStringArray("Parent_Interactable_Object")]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_swlln")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TV2/VHS Player/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09375, 1.4585571, 0)
+shape = SubResource("BoxShape3D_kk2f2")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
 [node name="TV Screen" parent="TV2" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_d1ihs")
 
@@ -96,6 +120,7 @@ stream = SubResource("VideoStreamTheora_d1ihs")
 volume_db = -20.0
 autoplay = true
 loop = true
+buffering_msec = 1000
 metadata/_edit_use_anchors_ = true
 
 [node name="Monster_Camera_POV" type="Camera3D" parent="SubViewport"]

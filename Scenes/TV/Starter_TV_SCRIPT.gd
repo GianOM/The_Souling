@@ -89,6 +89,14 @@ func _deobfuscate_Screen():
 	is_Screen_Obfuscated = false
 	
 	
+	
+func _reveal_Screen():
+	
+	var Temp_Tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	Temp_Tween.tween_property(video_stream_player,"modulate", Color(1.0, 1.0, 1.0, 0.02), 3.1)
+	is_Screen_Obfuscated = false
+	
+	
 func Set_New_Monster_Position(My_Monster:Monstro):
 	
 	

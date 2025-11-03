@@ -1280,7 +1280,7 @@ transform = Transform3D(0.7797428, 0, 0.7758874, 0, 1.1, 0, -0.7758874, 0, 0.779
 [node name="Lights and Switches" type="Node3D" parent="."]
 
 [node name="Upper_Floor_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08178091, 7.074881, 0.115188956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08178091, 7.074881, -0.49993753)
 
 [node name="Kids_Room_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.430997, 7.074881, -7.5609794)
@@ -1319,15 +1319,18 @@ does_light_starts_on = false
 
 [node name="Dining Room Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.559125, 3.565, 6.988199)
+does_light_starts_on = false
 
 [node name="Pantry_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.475795, 3.565, -0.053309858)
+does_light_starts_on = false
 
 [node name="Kitchen_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8468013, 3.574, -7.090262)
 
 [node name="Basement_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0321035, -1.271, -13.007727)
+does_light_starts_on = false
 
 [node name="Library_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5570326, 3.5747104, -7.4334254)
@@ -1454,7 +1457,7 @@ Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_11")
 
 [node name="MonsterGeneral12" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 3.78, -0.46)
-Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_13")
+Camera_3d_that_Sees_me = NodePath("../../Cameras/Monster_Camera_POV_15")
 
 [node name="MonsterGeneral13" parent="Monsters" node_paths=PackedStringArray("Camera_3d_that_Sees_me") instance=ExtResource("12_67m2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2751822, 2.3841858e-07, 1.5320143)

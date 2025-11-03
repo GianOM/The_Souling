@@ -11,17 +11,14 @@ script = ExtResource("1_cqxqd")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33031648, 0)
 visible = false
-light_color = Color(0.8132577, 0.8132577, 0.81325763, 1)
-light_specular = 0.65
-light_bake_mode = 1
 shadow_enabled = true
-shadow_normal_bias = 1.69
-shadow_blur = 2.0
+shadow_normal_bias = 2.116
+shadow_blur = 1.3
 distance_fade_enabled = true
 distance_fade_begin = 12.0
 distance_fade_shadow = 12.0
 distance_fade_length = 12.0
-omni_range = 15.0
+omni_range = 10.0
 omni_attenuation = 2.0
 
 [editable path="Basic Light 1"]

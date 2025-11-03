@@ -53,6 +53,9 @@ signal Add_Recipe_Item_to_Player
 @warning_ignore("unused_signal")
 signal Remove_Recipe_Item_from_Player
 
+@warning_ignore("unused_signal")
+signal Add_Tape_to_Player
+
 
 #endregion
 
@@ -72,3 +75,9 @@ var Number_of_Soul_Cakes: int = 0
 
 var Hour_of_Death: int = 18
 var Minute_of_Death: int = 0
+
+
+func Start_Monster_Hunt():
+	Allow_Monsters_to_Kill_Player.emit()
+	Unlock_All_Doors.emit()
+	Reset_Itens_Positions.emit()

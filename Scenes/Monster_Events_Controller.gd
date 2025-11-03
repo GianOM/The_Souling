@@ -50,7 +50,8 @@ func Monster_Interact_Events(Origin_of_Interaction: Vector3):
 		Temp_Distance = List_of_Possible_Interactable_Spooks[i].global_position.distance_to(Origin_of_Interaction)
 		
 		if Temp_Distance <= 8.0:
-			print("Distancia do bagulho %f" % Temp_Distance)
+			
+			#print("Distancia do bagulho %f" % Temp_Distance)
 			List_of_Possible_Interactable_Spooks[i].Interact()
 			monster_interaction_mesh_debug.global_position = List_of_Possible_Interactable_Spooks[i].global_position + Vector3(0,1.56,0)
 			List_of_Possible_Interactable_Spooks.shuffle()

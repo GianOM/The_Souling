@@ -22,6 +22,7 @@ var Possible_Itens : Array[Recipe_Item]
 func _ready() -> void:
 	
 	for i in range(monsters.get_child_count()):
+		
 		Possible_Active_Monster.append(monsters.get_child(i))
 		
 	Possible_Active_Monster.shuffle()
@@ -39,13 +40,15 @@ func _ready() -> void:
 	
 func Start_Monster_Hunter():
 	
-	monster_switch_timer.start()
+	monster_switch_timer.timeout.emit()
 	
+	#monster_switch_timer.start()
+	tv_scene._reveal_Screen()
 	
 	#Fazemos isso para que a TV possa entrar no modo de revelar o monstro
-	tv_scene.is_Screen_Obfuscated = false
+	#tv_scene.is_Screen_Obfuscated = false
 	
-	print("Monster Timer Started")
+	#print("Monster Timer Started")
 	
 	
 func _Switch_Active_Monster():

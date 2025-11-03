@@ -10,6 +10,8 @@ class_name Encontro_Crianca_1 extends Objeto_Interagivel
 
 var Has_Recieved_Cookie: bool = false
 
+var Has_Delivered_Tape: bool = false
+
 @onready var Zone: Zona_Interagivel = $Area3D
 
 
@@ -89,12 +91,14 @@ func Interact():
 		
 		Zone.process_mode = Node.PROCESS_MODE_DISABLED
 		
-		GlobalEvents.Reset_Itens_Positions.emit()
 		
 		GlobalEvents.MINUS_One_Soul_Cake_Added.emit()
 		
-		GlobalEvents.Allow_Monsters_to_Kill_Player.emit()
-		GlobalEvents.Unlock_All_Doors.emit()
+		if not Has_Delivered_Tape:
+		
+			GlobalEvents.Add_Tape_to_Player.emit()
+			
+			Has_Delivered_Tape = true
 	
 func _on_Dialogue_Advanced():
 	
