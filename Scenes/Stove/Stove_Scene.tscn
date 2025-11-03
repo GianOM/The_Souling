@@ -19,7 +19,7 @@ size = Vector3(1.8771973, 1.0239868, 1.1612549)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bmhox"]
 size = Vector3(2.0314941, 1.5126953, 2.1726685)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4ayx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlfmv"]
 render_priority = 0
 shader = ExtResource("10_qlfmv")
 shader_parameter/albedo = Color(1, 1, 1, 0)
@@ -71,36 +71,32 @@ surface_material_override/0 = ExtResource("6_gf2jt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71591854, 0.99565446, -0.45743573)
 visible = false
 
-[node name="Butter" parent="Itens/Butter2" index="0"]
-transform = Transform3D(-0.9202318, 0, 0.39137372, 0, 1, 0, -0.39137372, 0, -0.9202318, 0.1113255, -0.034131527, 0.15076059)
-lod_bias = 2.0
+[node name="Butter_001" parent="Itens/Butter2" index="0"]
+transform = Transform3D(0.43240055, 0, -0.9016816, 0, 1, 0, 0.9016816, 0, 0.43240055, 0, -0.035976887, 0.18796551)
 surface_material_override/0 = ExtResource("6_gf2jt")
 
 [node name="Sugar2" parent="Itens" instance=ExtResource("5_yiwy2")]
 transform = Transform3D(0.17127569, 0, -0.9852231, 0, 1, 0, 0.9852231, 0, 0.17127569, -0.51623976, 0.9764624, -0.5968164)
 visible = false
 
-[node name="Sugar" parent="Itens/Sugar2" index="0"]
-lod_bias = 2.0
+[node name="Sugar_001" parent="Itens/Sugar2" index="0"]
 surface_material_override/0 = ExtResource("6_gf2jt")
 
 [node name="Salt2" parent="Itens" instance=ExtResource("4_bmhox")]
 transform = Transform3D(0.282375, 0, 0.9593042, 0, 1, 0, -0.9593042, 0, 0.282375, -0.46618533, 0.9645377, -0.21688873)
 visible = false
 
-[node name="Salt" parent="Itens/Salt2" index="0"]
-lod_bias = 2.0
+[node name="Salt_002" parent="Itens/Salt2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15907356, 0, -0.115037024)
 surface_material_override/0 = ExtResource("6_gf2jt")
-
-[node name="Salt_001" parent="Itens/Salt2" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_w4ayx")
+surface_material_override/1 = SubResource("ShaderMaterial_qlfmv")
 
 [node name="Milk2" parent="Itens" instance=ExtResource("5_ac1ex")]
 transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, -0.45792696, 0.9643602, -0.7735656)
 visible = false
 
-[node name="Milk" parent="Itens/Milk2" index="0"]
-lod_bias = 2.0
+[node name="Milk_001" parent="Itens/Milk2" index="0"]
+transform = Transform3D(-0.67652905, 0, 0.736416, 0, 1, 0, -0.736416, 0, -0.67652905, 0, 0, 0)
 surface_material_override/0 = ExtResource("6_gf2jt")
 
 [node name="Flour" parent="Itens" instance=ExtResource("6_t7q66")]

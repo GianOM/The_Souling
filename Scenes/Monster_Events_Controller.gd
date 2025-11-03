@@ -1,5 +1,6 @@
 extends Node
 
+@onready var home: Node3D = $".."
 
 var List_of_Possible_Interactable_Spooks: Array[Objeto_Interagivel]
 
@@ -7,8 +8,6 @@ var List_of_Possible_Interactable_Spooks: Array[Objeto_Interagivel]
 @onready var List_of_Lights_and_Switches: Node3D = $"../Lights and Switches"
 
 @onready var tv_scene: Televisao = $"../TV Scene"
-
-@onready var monster_event_timer: Timer = $Monster_Event_Timer
 
 @onready var monster_interaction_mesh_debug: MeshInstance3D = $"Monster Interaction Mesh Debug"
 @onready var monster_sound_mesh_debug: MeshInstance3D = $"Monster Sound Mesh Debug"
@@ -26,10 +25,6 @@ func _input(event: InputEvent) -> void:
 			monster_interaction_mesh_debug.show()
 			monster_sound_mesh_debug.show()
 		
-
-
-
-
 func _ready() -> void:
 	
 	#Inserimos aqui todos os objectos que o Monstro pode interagir
@@ -46,25 +41,29 @@ func _ready() -> void:
 	
 	List_of_Possible_Interactable_Spooks.shuffle()
 	
+func Monster_Interact_Events(Origin_of_Interaction: Vector3):
 	
-	monster_event_timer.start()
+	var Temp_Distance: float
+	
+	for i in range(List_of_Possible_Interactable_Spooks.size()):
+		
+		Temp_Distance = List_of_Possible_Interactable_Spooks[i].global_position.distance_to(Origin_of_Interaction)
+		
+		if Temp_Distance <= 8.0:
+			print("Distancia do bagulho %f" % Temp_Distance)
+			List_of_Possible_Interactable_Spooks[i].Interact()
+			monster_interaction_mesh_debug.global_position = List_of_Possible_Interactable_Spooks[i].global_position + Vector3(0,1.56,0)
+			List_of_Possible_Interactable_Spooks.shuffle()
 			
-			
-			
+			return
 	
-func _on_Monster_Event_Timer_Timeout():
+func Monster_Sound_Events(Origin_of_Sound:Vector3):
 	
-	print("Monster interacted")
-	
-	List_of_Possible_Interactable_Spooks[0].Interact()
-	
-	monster_interaction_mesh_debug.global_position = List_of_Possible_Interactable_Spooks[0].global_position + Vector3(0,1.56,0)
-	
-	spooky_sound.global_position = List_of_Possible_Interactable_Spooks[-1].global_position
-	
+	spooky_sound.global_position = Origin_of_Sound
+	monster_sound_mesh_debug.global_position = Origin_of_Sound
 	spooky_sound.play()
 	
-	monster_sound_mesh_debug.global_position = List_of_Possible_Interactable_Spooks[-1].global_position
 	
-	List_of_Possible_Interactable_Spooks.shuffle()
+	
+	
 	

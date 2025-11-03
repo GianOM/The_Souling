@@ -15,6 +15,9 @@ var Possible_Itens : Array[Recipe_Item]
 
 @onready var pick_up_itens: Node3D = $"Pick Up Itens"
 
+@onready var monster_controller: Node = $Monster_Controller
+
+
 
 func _ready() -> void:
 	
@@ -47,8 +50,8 @@ func Start_Monster_Hunter():
 	
 func _Switch_Active_Monster():
 	
-	
-	monster_switch_timer.wait_time = 35.0
+	##Troca o Tempo que demora pro monstro teleportar
+	monster_switch_timer.wait_time = 40.0
 	
 	monster_switch_timer.start()
 	
@@ -72,7 +75,8 @@ func _Switch_Active_Monster():
 	
 	tv_scene.Set_New_Monster_Position(Possible_Active_Monster[IDX_Active_Monster])
 	
-	
+	monster_controller.Monster_Interact_Events(Possible_Active_Monster[IDX_Active_Monster].global_position)
+	monster_controller.Monster_Sound_Events(Possible_Active_Monster[IDX_Active_Monster].global_position)
 	
 func _set_up_Itens():
 	

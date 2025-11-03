@@ -1202,9 +1202,6 @@ visible = false
 mesh = SubResource("ArrayMesh_2rhux")
 skeleton = NodePath("")
 
-[node name="Monster_Event_Timer" type="Timer" parent="Monster_Controller"]
-wait_time = 36.0
-
 [node name="Spooky_Sound" type="AudioStreamPlayer3D" parent="Monster_Controller"]
 stream = ExtResource("5_c8v7s")
 
@@ -1316,6 +1313,10 @@ does_light_starts_on = false
 [node name="Main Corridor_Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315, 3.565, 3.2267964)
 
+[node name="Living Room Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.723064, 3.565, 1.920147)
+does_light_starts_on = false
+
 [node name="Dining Room Light" parent="Lights and Switches" instance=ExtResource("5_cxprx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.559125, 3.565, 6.988199)
 
@@ -1335,6 +1336,10 @@ does_light_starts_on = false
 [node name="Main_Corridor_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.459899, 1.4149169, 1.5923489)
 Lights_to_Affect = [NodePath("../Main Corridor_Light")]
+
+[node name="Living_Room_LightSwitch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6102133, 1.4149169, 1.5219489)
+Lights_to_Affect = [NodePath("../Living Room Light")]
 
 [node name="Dining_Room_Light_Switch" parent="Lights and Switches" node_paths=PackedStringArray("Lights_to_Affect") instance=ExtResource("6_bpuqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.126906, 1.4149169, 6.1396112)
@@ -1730,6 +1735,5 @@ fov = 90.2
 far = 150.0
 
 [connection signal="timeout" from="Monster_Switch_Timer" to="." method="_Switch_Active_Monster"]
-[connection signal="timeout" from="Monster_Controller/Monster_Event_Timer" to="Monster_Controller" method="_on_Monster_Event_Timer_Timeout"]
 
 [editable path="Main House V1"]

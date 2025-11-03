@@ -21,6 +21,7 @@ config/icon="uid://d3gl7hq5bxbra"
 GlobalEvents="*res://Global_Events.gd"
 ShaderCompiler="*res://shader_compiler.gd"
 EncounterManager="*res://encounter_manager.gd"
+Energia="*res://energia.gd"
 
 [display]
 
