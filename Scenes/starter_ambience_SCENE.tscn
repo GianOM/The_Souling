@@ -25,7 +25,7 @@ script = ExtResource("1_uaant")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6536455, 1.5400617, 3.2165225)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_uaant")]
-transform = Transform3D(-0.62933403, 0, 0.77713495, 0, 1, 0, -0.77713495, 0, -0.62933403, -9.188558, 0.009389192, 3.7229316)
+transform = Transform3D(-0.629334, 0, 0.7771349, 0, 1, 0, -0.7771349, 0, -0.629334, -9.026804, 0.009389192, 3.357428)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_8dfxx")

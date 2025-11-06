@@ -9,16 +9,21 @@ var Can_Monster_Kill_Player: bool = false
 
 @onready var Debug_Mesh: MeshInstance3D = $Debug_Mesh
 
+@onready var the_father: Node3D = $"The Father"
+
 @warning_ignore("unused_parameter")
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("B_KEY"):
 			if is_Monster_Active:
 				
 				Debug_Mesh.scale = Vector3(1,1,1)
+				the_father.show()
 				
 			else:
 				
 				Debug_Mesh.scale = Vector3(0.05,0.1,0.05)
+				
+				the_father.hide()
 	
 	
 func _ready() -> void:
@@ -29,6 +34,8 @@ func _ready() -> void:
 func Make_Visible():
 	
 	Debug_Mesh.scale = Vector3(1,1,1)
+	
+	the_father.show()
 	
 func _set_monsters_to_Kill_Mode():
 	

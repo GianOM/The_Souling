@@ -6,11 +6,11 @@ class_name Televisao extends Objeto_Interagivel
 @onready var turn_on_sound: AudioStreamPlayer3D = $"Turn On Sound"
 @onready var turn_off_sound: AudioStreamPlayer3D = $"Turn OFF Sound"
 
+var is_House_Energy_Working: bool = true
+
 @onready var tv_screen: MeshInstance3D = $"TV2/TV Screen"
 
 @onready var video_stream_player: VideoStreamPlayer = $SubViewport/VideoStreamPlayer
-
-@onready var flicker_light: OmniLight3D = $TV2/Flicker_Light
 
 var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -22,14 +22,34 @@ var Tick_TV: float = 0.05
 
 var is_Screen_Obfuscated: bool = true
 
-
 const Initial_Time : float = 1080
 
 var Total_Play_Time: float = 0
 
 @onready var hour_time: Label3D = $Hour_Time
 
-
+func _ready() -> void:
+	
+	Energia.Event_Blackout_Energy.connect(_on_Power_Outage)
+	Energia.Restore_Energy.connect(_on_Energy_Restored)
+	
+	Energia.Total_Number_of_Lights += 1
+	Energia.Number_of_Lights_ON += 1
+	
+func _on_Power_Outage():
+	
+	Turn_Off_TV()
+	
+	is_House_Energy_Working = false
+	
+func _on_Energy_Restored():
+	
+	#Turn_On_TV()
+	
+	is_House_Energy_Working = true
+	
+	
+	
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	
@@ -85,9 +105,7 @@ func _Start_Screen_Obfuscation():
 	
 func _deobfuscate_Screen():
 	
-	
 	is_Screen_Obfuscated = false
-	
 	
 	
 func _reveal_Screen():
@@ -99,11 +117,8 @@ func _reveal_Screen():
 	
 func Set_New_Monster_Position(My_Monster:Monstro):
 	
-	
-	
 	monster_camera_pov.global_position = My_Monster.Camera_3d_that_Sees_me.global_position
 	
-	#monster_camera_pov.position.z += 3
 	
 	monster_camera_pov.global_rotation = My_Monster.Camera_3d_that_Sees_me.rotation
 	
@@ -112,24 +127,51 @@ func Set_New_Monster_Position(My_Monster:Monstro):
 	
 func Interact():
 	
-	if static_sound.stream_paused:
+	if is_House_Energy_Working:
 	
-		static_sound.stream_paused = false
-		
-		turn_on_sound.play()
-		
-		video_stream_player.paused = false
-		
-		tv_screen.get_surface_override_material(0).set("emission", Color(1.0, 1.0, 1.0, 1.0))
-		
+		if static_sound.stream_paused:
+			
+			Turn_On_TV()
+			
+		else:
+			
+			Turn_Off_TV()
+			
 	else:
-	
-		static_sound.stream_paused = true
+		
 		turn_off_sound.play()
 		
-		video_stream_player.paused = true
 		
-		tv_screen.get_surface_override_material(0).set("emission", Color(0.0, 0.0, 0.0, 1.0))
-		
-		flicker_light.omni_range = 0
+	
+func Turn_On_TV():
+	
+	
+	turn_on_sound.play()
+	
+	
+	static_sound.stream_paused = false
+	
+	video_stream_player.paused = false
+	
+	tv_screen.get_surface_override_material(0).set("emission", Color(1.0, 1.0, 1.0, 1.0))
+	tv_screen.get_surface_override_material(0).set("albedo_color", Color(1.0, 1.0, 1.0, 1.0))
+	
+	Energia.Number_of_Lights_ON += 1
+	
+	Energia.Light_Was_Interacted.emit()
+	
+func Turn_Off_TV():
+	
+	static_sound.stream_paused = true
+	
+	turn_off_sound.play()
+	
+	video_stream_player.paused = true
+	
+	tv_screen.get_surface_override_material(0).set("emission", Color(0.0, 0.0, 0.0, 1.0))
+	tv_screen.get_surface_override_material(0).set("albedo_color", Color(0.0, 0.0, 0.0, 1.0))
+	
+	Energia.Number_of_Lights_ON -= 1
+	
+	Energia.Light_Was_Interacted.emit()
 	

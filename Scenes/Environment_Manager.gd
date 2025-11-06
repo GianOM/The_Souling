@@ -62,6 +62,7 @@ func _Switch_Active_Monster():
 		
 		Possible_Active_Monster[IDX_Active_Monster].is_Monster_Active = false
 		Possible_Active_Monster[IDX_Active_Monster].Debug_Mesh.scale = Vector3.ZERO
+		Possible_Active_Monster[IDX_Active_Monster].the_father.hide()
 	
 	if (IDX_Active_Monster + 1) < Possible_Active_Monster.size():
 		

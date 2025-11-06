@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8unf40xek7yj"]
+
+[ext_resource type="Script" uid="uid://c58btopin6ltd" path="res://Assets 3D/Energy Box/energy_box_SCRIPT.gd" id="1_tijhe"]
+[ext_resource type="PackedScene" uid="uid://dnhqrwe6ks6ut" path="res://Assets 3D/Energy Box/Energy Box.glb" id="1_wt4k4"]
+[ext_resource type="Script" uid="uid://tte8j0hm1k47" path="res://Scenes/Interactable Zone/interactable_zone_SCRIPT.gd" id="3_y0ngk"]
+[ext_resource type="AudioStream" uid="uid://bflh2a3o7nk4" path="res://Sounds/SFX/Energy Box/Power Down.mp3" id="4_ywqqt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wt4k4"]
+points = PackedVector3Array(0.09076308, 1.7785642, 0.23968405, 0.09076308, 1.7785642, -0.25679904, -0.115081064, 1.7783902, 0.23968405, 0.09076308, 1.7124696, 0.23968405, 0.09080465, 1.0682211, 0.22573626, -0.115081064, 1.7783902, -0.25679904, 0.09080465, 1.0682211, -0.24289985, 0.09076308, 1.7124696, -0.25679904, -0.121589065, 1.3503406, 0.22325772, -0.115081064, 1.7124696, 0.23968405, -0.08661635, 1.0682211, 0.22573626, -0.0020331293, 0.02427422, 0.12732413, 0.0108581185, 0.02427422, 0.1248942, 0.021815687, 0.02427422, 0.11775023, 0.02921775, 0.024448154, 0.10696134, 0.03192076, 0.024448154, 0.09413129, -0.115081064, 1.7124696, -0.25679904, -0.121589065, 1.3503406, 0.21601653, 0.027720705, 0.00166291, -0.10998273, 0.025516719, 0.00166291, -0.12179218, 0.018946335, 0.00166291, -0.13185209, 0.009049192, 0.00166291, -0.1386559, -0.0027192757, 0.00166291, -0.14113441, -0.08661635, 1.0682211, -0.24289985, -0.121318765, 1.3461664, 0.22325772, -0.032805786, 0.024448154, 0.106232345, -0.02565322, 0.02427422, 0.11721563, -0.014841206, 0.02427422, 0.124602616, -0.013448119, 0.00166291, 0.120714724, -0.0019915402, 0.00166291, 0.12314466, 0.009527415, 0.00166291, 0.12095773, 0.019341394, 0.00166291, 0.1145913, 0.025953352, 0.00166291, 0.10492018, 0.02836527, 0.00166291, 0.09345093, -0.121318765, 1.3461664, 0.21601653, -0.033866197, 0.00166291, -0.11071171, -0.014529325, 0.00166291, -0.13894749, -0.024592817, 0.00166291, -0.13238668, -0.03139191, 0.00166291, -0.12247257, -0.035217695, 0.024448154, 0.09335372, -0.03166221, 0.00166291, 0.09277055, -0.029499806, 0.00166291, 0.1042884, -0.023116559, 0.00166291, 0.114105314)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk2f2"]
+size = Vector3(0.78123856, 1.1935272, 1.2705078)
+
+[node name="EnergyBoxScene" type="Node3D"]
+script = ExtResource("1_tijhe")
+Interact_Text = "Open Lid"
+
+[node name="Energy Box" parent="." instance=ExtResource("1_wt4k4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Energy Box/Armature_001/Skeleton3D/Fuse Box" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Energy Box/Armature_001/Skeleton3D/Fuse Box/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07884394, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wt4k4")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("Parent_Interactable_Object")]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("3_y0ngk")
+Parent_Interactable_Object = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33498955, 1.286232, -0.03125)
+shape = SubResource("BoxShape3D_kk2f2")
+debug_color = Color(0.9676674, 0, 0.46974695, 1)
+
+[node name="Power Down Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17801297, 1.491243, 0)
+stream = ExtResource("4_ywqqt")
+volume_db = -3.0
+unit_size = 5.0
+
+[editable path="Energy Box"]

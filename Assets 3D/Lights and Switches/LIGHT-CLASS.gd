@@ -1,15 +1,14 @@
 class_name Luz extends Node3D
 
-
 @onready var omni_light_3d: OmniLight3D = $OmniLight3D
 
 @export var does_light_starts_on:bool = true
-
 
 #Usado para restaurar a luz
 var Light_Toggled_on: bool 
 
 func _ready() -> void:
+	
 	Energia.Event_Blackout_Energy.connect(_on_queda_de_energia)
 	Energia.Total_Number_of_Lights += 1
 	

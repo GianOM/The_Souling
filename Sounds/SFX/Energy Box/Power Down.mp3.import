@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bflh2a3o7nk4"
+path="res://.godot/imported/Power Down.mp3-0a3878ed4294df98f9f70b2c271329c0.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/Energy Box/Power Down.mp3"
+dest_files=["res://.godot/imported/Power Down.mp3-0a3878ed4294df98f9f70b2c271329c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
